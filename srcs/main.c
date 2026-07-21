@@ -180,8 +180,8 @@ int main(int argc, char **argv)
     ** When npath was 0 we pointed paths at the stack array default_path,
     ** which must not be freed.
     */
-    if (argc > 1 || npath != 1 || paths != default_path)
-        free(paths);
+    // if (argc > 1 || npath != 1 || paths != default_path)
+    //     free(paths);
 
     return (exit_code);
 }
