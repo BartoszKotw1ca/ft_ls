@@ -145,13 +145,12 @@ static long compute_total(t_entry *entries, int n)
 ** With -l: will call print_long_entry() once print_long.c is written.
 ** Without -l: just print the path as the user typed it (matches ls).
 */
-static int  list_file(const char *path, struct stat *st, const t_options *opts)
+static int  list_file(t_entry *e, const t_options *opts)
 {
-    (void)st;
-
-    if (!opts->l)
-        printf("%s\n", path);
-    /* -l branch: print_long_entry(path, st) — added in the next step */
+    if (opts->l)
+        print_entries_long(e, 1);
+    else
+        printf("%s\n", e->name);
     return (0);
 }
 
@@ -188,9 +187,10 @@ static int  list_directory(const char *path, const t_options *opts,
     if (opts->l)
         printf("total %ld\n", compute_total(entries, count));
 
-    if (!opts->l)
+    if (opts->l)
+        print_entries_long(entries, count);
+    else
         print_entries_short(entries, count);
-    /* else: print_entries_long(entries, count) — next step */
 
     ret = 0;
 
@@ -232,6 +232,8 @@ static int  list_directory(const char *path, const t_options *opts,
 int list_path(const char *path, const t_options *opts, int print_header)
 {
     struct stat st;
+    t_entry     e;
+    ssize_t     llen;
 
     if (lstat(path, &st) == -1)
     {
@@ -241,5 +243,24 @@ int list_path(const char *path, const t_options *opts, int print_header)
 
     if (S_ISDIR(st.st_mode))
         return (list_directory(path, opts, print_header));
-    return (list_file(path, &st, opts));
+
+    /*
+    ** Build a synthetic t_entry so list_file can pass it straight to
+    ** print_entries_long (which works on an array of t_entry).
+    ** e.name is the path as the user typed it — ls prints it verbatim.
+    */
+    strncpy(e.name,     path, sizeof(e.name)     - 1);
+    e.name[sizeof(e.name) - 1]         = '\0';
+    strncpy(e.fullpath, path, sizeof(e.fullpath) - 1);
+    e.fullpath[sizeof(e.fullpath) - 1] = '\0';
+    e.st      = st;
+    e.is_link = S_ISLNK(st.st_mode);
+    e.link_target[0] = '\0';
+    if (e.is_link)
+    {
+        llen = readlink(path, e.link_target, sizeof(e.link_target) - 1);
+        if (llen >= 0)
+            e.link_target[(size_t)llen] = '\0';
+    }
+    return (list_file(&e, opts));
 }

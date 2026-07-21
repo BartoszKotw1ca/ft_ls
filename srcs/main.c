@@ -148,7 +148,12 @@ int main(int argc, char **argv)
     **   • there are multiple top-level arguments (files + dirs, or 2+ dirs)
     **   • -R is active (every sub-directory needs a header)
     */
-    print_header = (al.nfiles + al.ndirs > 1) || opts.R;
+	/*
+    ** Header decision is based on the original argument count, not the count
+    ** of successfully classified paths.  When the user provides two args and
+    ** one fails lstat, real ls still prints a header for the surviving dir.
+    */
+    print_header = (npath > 1) || opts.R;
 
     i = 0;
     while (i < al.ndirs)

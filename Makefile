@@ -13,10 +13,10 @@ SRCS = $(SRC_DIR)/main.c \
 	$(SRC_DIR)/error.c \
 	$(SRC_DIR)/print_short.c \
 	$(SRC_DIR)/sort.c \
-# 	$(SRC_DIR)/print_long.c \
+	$(SRC_DIR)/stat_utils.c \
+	$(SRC_DIR)/print_long.c \
 # 	$(SRC_DIR)/recursive.c \
-# 	$(SRC_DIR)/stat_utils.c \
-# 	$(SRC_DIR)/utils.c
+# 	$(SRC_DIR)/utils.c 
 OBJS = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRCS))
 
 all: $(NAME)

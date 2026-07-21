@@ -84,4 +84,20 @@ void    sort_entries(t_entry *entries, int n, const t_options *opts);
 */
 void    print_entries_short(t_entry *entries, int n);
 
+/*
+** ─── stat_utils.c ────────────────────────────────────────────────────────────
+** Permission string and owner/group name helpers used by print_long.c.
+*/
+void        mode_to_str(mode_t mode, char *buf); /* buf must be >= 11 bytes */
+const char *get_owner(uid_t uid);                /* pw_name or decimal uid   */
+const char *get_group(gid_t gid);                /* gr_name or decimal gid   */
+
+/*
+** ─── print_long.c ────────────────────────────────────────────────────────────
+** Full ls -l output: permissions, nlink, owner, group, size, date, name.
+** Pre-scans column widths so every row is aligned.
+*/
+void    print_entries_long(t_entry *entries, int n);
+
+
 #endif /* FT_LS_H */
