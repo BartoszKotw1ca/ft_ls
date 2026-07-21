@@ -12,7 +12,7 @@
 # include <string.h>
 # include <unistd.h>
 # include <errno.h>
-
+#include "../mylibft/mylibft.h"
 /*
 ** ─── OPTIONS ────────────────────────────────────────────────────────────────
 ** All flags parsed from argv are stored in a single t_options struct.
@@ -70,5 +70,18 @@ int     list_path(const char *path, const t_options *opts, int print_header);
 ** Prints "ft_ls: <path>: <strerror>" to stderr, mirroring ls behaviour.
 */
 void    ft_error(const char *path);
+
+/*
+** ─── sort.c ──────────────────────────────────────────────────────────────────
+** Sort the entries array in-place according to the active flags.
+**   -t → by st_mtime descending, then alpha; -r → reverse the result.
+*/
+void    sort_entries(t_entry *entries, int n, const t_options *opts);
+
+/*
+** ─── print_short.c ───────────────────────────────────────────────────────────
+** One entry name per line (no -l). Called by list_dir after sorting.
+*/
+void    print_entries_short(t_entry *entries, int n);
 
 #endif /* FT_LS_H */

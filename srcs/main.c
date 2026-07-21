@@ -166,7 +166,7 @@ int main(int argc, char **argv)
             exit_code = 1;
         i++;
     }
-
+	printf("\n");
     /* ── Cleanup ─────────────────────────────────────────────────────────── */
     free_arglist(&al);
 

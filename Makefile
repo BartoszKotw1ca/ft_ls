@@ -1,6 +1,6 @@
 NAME = ft_ls
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 SRC_DIR = srcs
 OBJ_DIR = obj
 INC_DIR = includes
@@ -11,9 +11,9 @@ SRCS = $(SRC_DIR)/main.c \
 	$(SRC_DIR)/parse_args.c \
 	$(SRC_DIR)/list_dir.c \
 	$(SRC_DIR)/error.c \
-# 	$(SRC_DIR)/print_short.c \
+	$(SRC_DIR)/print_short.c \
+	$(SRC_DIR)/sort.c \
 # 	$(SRC_DIR)/print_long.c \
-# 	$(SRC_DIR)/sort.c \
 # 	$(SRC_DIR)/recursive.c \
 # 	$(SRC_DIR)/stat_utils.c \
 # 	$(SRC_DIR)/utils.c
