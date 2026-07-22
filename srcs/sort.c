@@ -16,23 +16,40 @@ static int  cmp_alpha(const void *a, const void *b)
     return (strcmp(ea->name, eb->name));
 }
 
+#if defined(__APPLE__) || defined(__MACH__) || defined(__FreeBSD__) \
+ || defined(__NetBSD__) || defined(__OpenBSD__) || defined(__DragonFly__)
+static const struct timespec *stat_mtim(const struct stat *st)
+{
+    return (&st->st_mtimespec);
+}
+#else
+static const struct timespec *stat_mtim(const struct stat *st)
+{
+    return (&st->st_mtim);
+}
+#endif
+
 /*
 ** Modification-time order — newest first (-t).
 **
-** ls uses full nanosecond precision (st_mtim.tv_nsec on Linux / POSIX.1-2008).
-** Without it, entries created in the same second are ordered differently from
-** the system ls.  We compare seconds first, then nanoseconds, then fall back
-** to alphabetical so the result is always deterministic.
+** ls uses full nanosecond precision when available. We compare seconds first,
+** then nanoseconds, then fall back to alphabetical so the result is always
+** deterministic across systems.
 */
 static int  cmp_time(const void *a, const void *b)
 {
-    const t_entry *ea = (const t_entry *)a;
-    const t_entry *eb = (const t_entry *)b;
+    const t_entry           *ea = (const t_entry *)a;
+    const t_entry           *eb = (const t_entry *)b;
+    const struct timespec   *ta;
+    const struct timespec   *tb;
 
-    if (eb->st.st_mtim.tv_sec != ea->st.st_mtim.tv_sec)
-        return (eb->st.st_mtim.tv_sec > ea->st.st_mtim.tv_sec) ? 1 : -1;
-    if (eb->st.st_mtim.tv_nsec != ea->st.st_mtim.tv_nsec)
-        return (eb->st.st_mtim.tv_nsec > ea->st.st_mtim.tv_nsec) ? 1 : -1;
+    ta = stat_mtim(&ea->st);
+    tb = stat_mtim(&eb->st);
+
+    if (tb->tv_sec != ta->tv_sec)
+        return (tb->tv_sec > ta->tv_sec) ? 1 : -1;
+    if (tb->tv_nsec != ta->tv_nsec)
+        return (tb->tv_nsec > ta->tv_nsec) ? 1 : -1;
     return (strcmp(ea->name, eb->name));
 }
 
