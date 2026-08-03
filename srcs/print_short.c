@@ -14,7 +14,8 @@ void    print_entries_short(t_entry *entries, int n)
     i = 0;
     while (i < n)
     {
-        printf("%s ", entries[i].name);
+        /* Print one entry per line to match ls -1 behavior */
+        printf("%s\n", entries[i].name);
         i++;
     }
 }

@@ -136,7 +136,13 @@ static long compute_total(t_entry *entries, int n)
         total += entries[i].st.st_blocks;
         i++;
     }
+
+#if defined(__APPLE__) || defined(__MACH__) || defined(__FreeBSD__) \
+ || defined(__NetBSD__) || defined(__OpenBSD__) || defined(__DragonFly__)
+    return (total);
+#else
     return (total / 2);
+#endif
 }
 
 /*
