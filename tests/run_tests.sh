@@ -11,6 +11,7 @@ VALGRIND=$(command -v valgrind || true)
 
 NO_VALGRIND=0
 KEEP=0
+failures=0
 
 for arg in "$@"; do
     case "$arg" in
@@ -40,7 +41,7 @@ fi
 
 TMPROOT=$(mktemp -d /tmp/ft_ls_tests.XXXXXX)
 RESULTS_DIR=$(mktemp -d /tmp/ft_ls_results.XXXXXX)
-trap 'ret=$?; if [ "$KEEP" -eq 0 ]; then chmod -R u+rwx "$TMPROOT" "$RESULTS_DIR" || true; rm -rf "$TMPROOT" "$RESULTS_DIR"; fi; exit $ret' EXIT
+trap 'ret=$?; if [ "$KEEP" -eq 1 ] || [ "${failures:-0}" -ne 0 ]; then echo "Preserving temporary workspace: ${TMPROOT:-}"; echo "Preserving results workspace: ${RESULTS_DIR:-}"; else chmod -R u+rwx "$TMPROOT" "$RESULTS_DIR" || true; rm -rf "$TMPROOT" "$RESULTS_DIR"; fi; exit $ret' EXIT
 
 echo "Test workspace: $TMPROOT"
 echo "Result workspace: $RESULTS_DIR"
@@ -88,8 +89,6 @@ while [ $i -lt 120 ]; do
 done
 
 # helper: run pair of commands and compare outputs
-failures=0
-
 run_and_compare() {
     local testname="$1"
     local ls_flags="$2"
@@ -125,12 +124,16 @@ run_and_compare() {
             echo "Running valgrind for $testname..."
             vglog="$RESULTS_DIR/valgrind_${testname}.log"
             valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --leak-resolution=high --num-callers=50 --log-file="$vglog" "$FT_BIN" $ft_flags "$target" >/dev/null 2>&1 || true
-            # check for definite leaks
-            if grep -q "definitely lost: 0 bytes" "$vglog"; then
+            if [ ! -s "$vglog" ]; then
+                echo "[WARN] valgrind did not produce a log file (see $vglog)"
+                failures=$((failures+1))
+            elif grep -Eq 'definitely lost: 0 bytes|All heap blocks were freed -- no leaks are possible|no leaks are possible' "$vglog"; then
                 echo "[PASS] valgrind: no definite leaks"
-            else
+            elif grep -Eq 'definitely lost: [1-9][0-9]* bytes' "$vglog"; then
                 echo "[WARN] valgrind: definite leaks detected (see $vglog)"
                 failures=$((failures+1))
+            else
+                echo "[PASS] valgrind: no definite leaks reported"
             fi
         else
             echo "valgrind not installed; skipping valgrind for $testname"
