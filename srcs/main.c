@@ -57,7 +57,7 @@ static int  classify(char **paths, int npath,
         if (lstat(paths[i], &st) == -1)
         {
             ft_error(paths[i]);
-            *exit_code = 1;
+            *exit_code = 2;
             errors++;
         }
         else if (S_ISDIR(st.st_mode))
@@ -103,7 +103,7 @@ int main(int argc, char **argv)
     if (exit_code)
     {
         free(paths);
-        return (1);
+        return (exit_code);
     }
 
     /* ── 2. Default to current directory ────────────────────────────────── */
@@ -135,7 +135,7 @@ int main(int argc, char **argv)
     while (i < al.nfiles)
     {
         if (list_path(al.files[i], &opts, 0) != 0)
-            exit_code = 1;
+            exit_code = 2;
         i++;
     }
 
@@ -168,7 +168,7 @@ int main(int argc, char **argv)
             printf("\n");
 
         if (list_path(al.dirs[i], &opts, print_header) != 0)
-            exit_code = 1;
+            exit_code = 2;
         i++;
     }
     /* ── Cleanup ─────────────────────────────────────────────────────────── */

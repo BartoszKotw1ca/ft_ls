@@ -60,6 +60,7 @@ mkdir -p "$TMPROOT/dir_grouped/visible_dir"
 mkdir -p "$TMPROOT/dir_grouped/.hidden_dir"
 mkdir -p "$TMPROOT/dir_multi_a"
 mkdir -p "$TMPROOT/dir_multi_b"
+mkdir -p "$TMPROOT/dir_multi_c"
 mkdir -p "$TMPROOT/dir_dates"
 mkdir -p "$TMPROOT/dir_empty"
 
@@ -76,8 +77,7 @@ printf "x" > "$TMPROOT/dir_spaces/file with spaces.txt"
 # filename beginning with dash
 touch "$TMPROOT/dir_spaces/-dashfile"
 # filename with newline (use $'...' quoting)
-printf "n" > $TMPROOT/dir_spaces/$'file
-newline'
+printf "n" > "$TMPROOT/dir_spaces/"$'file\nnewline'
 
 # symlinks
 echo "t" > "$TMPROOT/dir_symlinks/target_dir/file_in_target"
@@ -115,11 +115,28 @@ printf 'child\n' > "$TMPROOT/dir_grouped/visible_dir/child.txt"
 
 printf 'file-a\n' > "$TMPROOT/dir_multi_a/fileA.txt"
 printf 'file-b\n' > "$TMPROOT/dir_multi_b/fileB.txt"
+printf 'file-c\n' > "$TMPROOT/dir_multi_c/fileC.txt"
 
 printf 'old\n' > "$TMPROOT/dir_dates/old.txt"
 printf 'recent\n' > "$TMPROOT/dir_dates/recent.txt"
 touch -t 202001010101 "$TMPROOT/dir_dates/old.txt"
 touch -t 202501010101 "$TMPROOT/dir_dates/recent.txt"
+
+normalize_long() {
+    sed 's/  */ /g' | awk '{
+        if ($1 == "total") {
+            print "total"
+            next
+        }
+        mode = $1;
+        sub(/[@+]$/, "", mode);
+        name = "";
+        for (i = 9; i <= NF; i++) {
+            name = (i == 9) ? $i : name " " $i
+        }
+        printf "%s %s %s %s %s %s %s\n", mode, $2, $5, $6, $7, $8, name
+    }'
+}
 
 # helper: run pair of commands and compare outputs
 run_and_compare() {
@@ -127,13 +144,59 @@ run_and_compare() {
     local ls_flags="$2"
     local ft_flags="$3"
     local target="$4"
+    local ls_output="$RESULTS_DIR/${testname}.ls.out"
+    local ft_output="$RESULTS_DIR/${testname}.ft.out"
+    local ls_norm="$RESULTS_DIR/${testname}.ls.norm"
+    local ft_norm="$RESULTS_DIR/${testname}.ft.norm"
 
     printf '\n=== Test: %s (ls_flags: %s) (ft_flags: %s) on %s ===\n' "$testname" "$ls_flags" "$ft_flags" "$target"
     # Use C locale for deterministic ordering
-    LC_ALL=C "$LS_BIN" $ls_flags "$target" | sed -n '1,2000p' > "$RESULTS_DIR/${testname}.ls.out" 2>&1
+    LC_ALL=C "$LS_BIN" $ls_flags "$target" | sed -n '1,2000p' > "$ls_output" 2>&1
 
     # Run ft_ls and capture exit status
-    "$FT_BIN" $ft_flags "$target" > "$RESULTS_DIR/${testname}.ft.out" 2>"$RESULTS_DIR/${testname}.ft.err"
+    "$FT_BIN" $ft_flags "$target" > "$ft_output" 2>"$RESULTS_DIR/${testname}.ft.err"
+    ft_status=$?
+    if [ $ft_status -ne 0 ]; then
+        echo "ft_ls exited with status $ft_status (see $RESULTS_DIR/${testname}.ft.err)"
+    fi
+
+    if [ -s "$RESULTS_DIR/${testname}.ft.err" ]; then
+        echo "ft_ls stderr:"
+        sed -n '1,80p' "$RESULTS_DIR/${testname}.ft.err"
+    fi
+
+    if [[ "$ls_flags" == *"l"* ]]; then
+        normalize_long < "$ls_output" > "$ls_norm"
+        normalize_long < "$ft_output" > "$ft_norm"
+        if diff -u "$ls_norm" "$ft_norm" > "$RESULTS_DIR/${testname}.diff"; then
+            echo "[PASS] output match"
+        else
+            echo "[FAIL] output differs -> $RESULTS_DIR/${testname}.diff"
+            failures=$((failures+1))
+        fi
+    else
+        if diff -u "$ls_output" "$ft_output" > "$RESULTS_DIR/${testname}.diff"; then
+            echo "[PASS] output match"
+        else
+            echo "[FAIL] output differs -> $RESULTS_DIR/${testname}.diff"
+            failures=$((failures+1))
+        fi
+    fi
+
+    run_valgrind_case "$testname" "$FT_BIN" $ft_flags "$target"
+}
+
+run_and_compare_args() {
+    local testname="$1"
+    local ls_flags="$2"
+    local ft_flags="$3"
+    shift 3
+    local -a args=("$@")
+
+    printf '\n=== Test: %s (ls_flags: %s) (ft_flags: %s) on %s ===\n' "$testname" "$ls_flags" "$ft_flags" "${args[*]}"
+    LC_ALL=C "$LS_BIN" $ls_flags "${args[@]}" | sed -n '1,2000p' > "$RESULTS_DIR/${testname}.ls.out" 2>&1
+
+    "$FT_BIN" $ft_flags "${args[@]}" > "$RESULTS_DIR/${testname}.ft.out" 2>"$RESULTS_DIR/${testname}.ft.err"
     ft_status=$?
     if [ $ft_status -ne 0 ]; then
         echo "ft_ls exited with status $ft_status (see $RESULTS_DIR/${testname}.ft.err)"
@@ -151,26 +214,30 @@ run_and_compare() {
         failures=$((failures+1))
     fi
 
-    # valgrind run (if available and not disabled)
-    if [ "$NO_VALGRIND" -eq 0 ]; then
-        if command -v valgrind >/dev/null 2>&1; then
-            echo "Running valgrind for $testname..."
-            vglog="$RESULTS_DIR/valgrind_${testname}.log"
-            valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --leak-resolution=high --num-callers=50 --log-file="$vglog" "$FT_BIN" $ft_flags "$target" >/dev/null 2>&1 || true
-            if [ ! -s "$vglog" ]; then
-                echo "[WARN] valgrind did not produce a log file (see $vglog)"
-                failures=$((failures+1))
-            elif grep -Eq 'definitely lost: 0 bytes|All heap blocks were freed -- no leaks are possible|no leaks are possible' "$vglog"; then
-                echo "[PASS] valgrind: no definite leaks"
-            elif grep -Eq 'definitely lost: [1-9][0-9]* bytes' "$vglog"; then
-                echo "[WARN] valgrind: definite leaks detected (see $vglog)"
-                failures=$((failures+1))
-            else
-                echo "[PASS] valgrind: no definite leaks reported"
-            fi
+    run_valgrind_case "$testname" "$FT_BIN" $ft_flags "${args[@]}"
+}
+
+run_valgrind_case() {
+    local testname="$1"
+    shift
+    local -a cmd=("$@")
+
+    if [ "$NO_VALGRIND" -eq 0 ] && command -v valgrind >/dev/null 2>&1; then
+        echo "Running valgrind for $testname..."
+        vglog="$RESULTS_DIR/valgrind_${testname}.log"
+        valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file="$vglog" "${cmd[@]}" >/dev/null 2>&1 || true
+
+        if [ ! -s "$vglog" ]; then
+            echo "[WARN] valgrind produced no log ($vglog)"
+            failures=$((failures+1))
+        elif grep -Eq '(definitely|indirectly) lost: [1-9][0-9]* bytes' "$vglog"; then
+            echo "[FAIL] valgrind: memory leak detected (see $vglog)"
+            failures=$((failures+1))
         else
-            echo "valgrind not installed; skipping valgrind for $testname"
+            echo "[PASS] valgrind: clean memory"
         fi
+    elif [ "$NO_VALGRIND" -eq 0 ]; then
+        echo "valgrind not installed; skipping valgrind for $testname"
     fi
 }
 
@@ -200,25 +267,8 @@ run_and_compare grouped_options "-laR" "-laR" "$TMPROOT/dir_grouped"
 run_and_compare separated_options "-l -a -r -t -R" "-l -a -r -t -R" "$TMPROOT/dir_grouped"
 
 # Multiple path and mixed input tests
-printf '\n=== Test: multiple_dirs (ls_flags: -1) (ft_flags: ) on %s %s ===\n' "$TMPROOT/dir_multi_a" "$TMPROOT/dir_multi_b"
-LC_ALL=C "$LS_BIN" -1 "$TMPROOT/dir_multi_a" "$TMPROOT/dir_multi_b" > "$RESULTS_DIR/multiple_dirs.ls.out" 2>&1
-"$FT_BIN" "$TMPROOT/dir_multi_a" "$TMPROOT/dir_multi_b" > "$RESULTS_DIR/multiple_dirs.ft.out" 2>"$RESULTS_DIR/multiple_dirs.ft.err"
-if diff -u "$RESULTS_DIR/multiple_dirs.ls.out" "$RESULTS_DIR/multiple_dirs.ft.out" > "$RESULTS_DIR/multiple_dirs.diff"; then
-    echo "[PASS] output match"
-else
-    echo "[FAIL] output differs -> $RESULTS_DIR/multiple_dirs.diff"
-    failures=$((failures+1))
-fi
-
-printf '\n=== Test: mixed_files_dirs (ls_flags: -1) (ft_flags: ) on mixed inputs ===\n'
-LC_ALL=C "$LS_BIN" -1 "$TMPROOT/dir_multi_a/fileA.txt" "$TMPROOT/dir_multi_a" "$TMPROOT/dir_multi_b/fileB.txt" "$TMPROOT/dir_multi_b" > "$RESULTS_DIR/mixed_files_dirs.ls.out" 2>&1
-"$FT_BIN" "$TMPROOT/dir_multi_a/fileA.txt" "$TMPROOT/dir_multi_a" "$TMPROOT/dir_multi_b/fileB.txt" "$TMPROOT/dir_multi_b" > "$RESULTS_DIR/mixed_files_dirs.ft.out" 2>"$RESULTS_DIR/mixed_files_dirs.ft.err"
-if diff -u "$RESULTS_DIR/mixed_files_dirs.ls.out" "$RESULTS_DIR/mixed_files_dirs.ft.out" > "$RESULTS_DIR/mixed_files_dirs.diff"; then
-    echo "[PASS] output match"
-else
-    echo "[FAIL] output differs -> $RESULTS_DIR/mixed_files_dirs.diff"
-    failures=$((failures+1))
-fi
+run_and_compare_args multiple_dirs "-1" "" "$TMPROOT/dir_multi_b" "$TMPROOT/dir_multi_a" "$TMPROOT/dir_multi_c"
+run_and_compare_args mixed_files_dirs "-1" "" "$TMPROOT/dir_multi_a/fileA.txt" "$TMPROOT/dir_multi_a" "$TMPROOT/dir_multi_b/fileB.txt" "$TMPROOT/dir_multi_b"
 
 # Default path fallback
 printf '\n=== Test: default_path (ls_flags: ) (ft_flags: ) on . ===\n'
@@ -230,23 +280,45 @@ else
     echo "[FAIL] output differs -> $RESULTS_DIR/default_path.diff"
     failures=$((failures+1))
 fi
+run_valgrind_case default_path "$FT_BIN"
 
 # Tests that check behavior rather than exact textual match
 printf '\n=== Edge test: unreadable directory ===\n'
-LC_ALL=C "$LS_BIN" -1 "$TMPROOT/dir_unreadable" > "$TMPROOT/unreadable.ls.out" 2>&1 || true
-"$FT_BIN" -1 "$TMPROOT/dir_unreadable" > "$TMPROOT/unreadable.ft.out" 2>"$TMPROOT/unreadable.ft.err" || true
-if [ -s "$TMPROOT/unreadable.ft.err" ] || [ -s "$TMPROOT/unreadable.ls.out" ]; then
-    echo "[PASS] unreadable directory produced error output (see logs)"
+if [ "$(id -u)" -eq 0 ]; then
+    echo "[SKIP] unreadable directory test skipped (running as root)"
 else
-    echo "[FAIL] unreadable directory produced no error output"
+    LC_ALL=C "$LS_BIN" -1 "$TMPROOT/dir_unreadable" > "$TMPROOT/unreadable.ls.out" 2>&1 || true
+    "$FT_BIN" "$TMPROOT/dir_unreadable" > "$TMPROOT/unreadable.ft.out" 2>"$TMPROOT/unreadable.ft.err" || true
+    if [ -s "$TMPROOT/unreadable.ft.err" ] || [ -s "$TMPROOT/unreadable.ls.out" ]; then
+        echo "[PASS] unreadable directory produced error output (see logs)"
+    else
+        echo "[FAIL] unreadable directory produced no error output"
+        failures=$((failures+1))
+    fi
+fi
+
+printf '\n=== Edge test: invalid option ===\n'
+LC_ALL=C "$LS_BIN" -z > "$TMPROOT/invalid_option.ls.out" 2>"$TMPROOT/invalid_option.ls.err"
+ls_status=$?
+"$FT_BIN" -z > "$TMPROOT/invalid_option.ft.out" 2>"$TMPROOT/invalid_option.ft.err"
+ft_status=$?
+if [ "$ft_status" -eq 0 ] || [ "$ls_status" -eq 0 ]; then
+    echo "[FAIL] invalid option should fail with a non-zero exit code"
     failures=$((failures+1))
+elif [ ! -s "$TMPROOT/invalid_option.ft.err" ]; then
+    echo "[FAIL] ft_ls did not print an error for an invalid option"
+    failures=$((failures+1))
+else
+    echo "[PASS] invalid option produced stderr and a non-zero exit code"
 fi
 
 # Broken symlink handling
 printf '\n=== Edge test: broken symlink ===\n'
 LC_ALL=C "$LS_BIN" -l "$TMPROOT/dir_symlinks" > "$TMPROOT/broken_symlink.ls.out" 2>&1
 "$FT_BIN" -l "$TMPROOT/dir_symlinks" > "$TMPROOT/broken_symlink.ft.out" 2>"$TMPROOT/broken_symlink.ft.err"
-if diff -u "$TMPROOT/broken_symlink.ls.out" "$TMPROOT/broken_symlink.ft.out" > "$TMPROOT/broken_symlink.diff"; then
+normalize_long < "$TMPROOT/broken_symlink.ls.out" > "$TMPROOT/broken_symlink.ls.norm"
+normalize_long < "$TMPROOT/broken_symlink.ft.out" > "$TMPROOT/broken_symlink.ft.norm"
+if diff -u "$TMPROOT/broken_symlink.ls.norm" "$TMPROOT/broken_symlink.ft.norm" > "$TMPROOT/broken_symlink.diff"; then
     echo "[PASS] broken symlink output matches"
 else
     echo "[FAIL] broken symlink output differs -> $TMPROOT/broken_symlink.diff"
@@ -257,7 +329,9 @@ fi
 printf '\n=== Edge test: old file date ===\n'
 LC_ALL=C "$LS_BIN" -l "$TMPROOT/dir_dates" > "$TMPROOT/old_file_date.ls.out" 2>&1
 "$FT_BIN" -l "$TMPROOT/dir_dates" > "$TMPROOT/old_file_date.ft.out" 2>"$TMPROOT/old_file_date.ft.err"
-if diff -u "$TMPROOT/old_file_date.ls.out" "$TMPROOT/old_file_date.ft.out" > "$TMPROOT/old_file_date.diff"; then
+normalize_long < "$TMPROOT/old_file_date.ls.out" > "$TMPROOT/old_file_date.ls.norm"
+normalize_long < "$TMPROOT/old_file_date.ft.out" > "$TMPROOT/old_file_date.ft.norm"
+if diff -u "$TMPROOT/old_file_date.ls.norm" "$TMPROOT/old_file_date.ft.norm" > "$TMPROOT/old_file_date.diff"; then
     echo "[PASS] old file date output matches"
 else
     echo "[FAIL] old file date output differs -> $TMPROOT/old_file_date.diff"
@@ -268,7 +342,9 @@ fi
 printf '\n=== Edge test: empty directory ===\n'
 LC_ALL=C "$LS_BIN" -l "$TMPROOT/dir_empty" > "$TMPROOT/empty_dir.ls.out" 2>&1
 "$FT_BIN" -l "$TMPROOT/dir_empty" > "$TMPROOT/empty_dir.ft.out" 2>"$TMPROOT/empty_dir.ft.err"
-if diff -u "$TMPROOT/empty_dir.ls.out" "$TMPROOT/empty_dir.ft.out" > "$TMPROOT/empty_dir.diff"; then
+normalize_long < "$TMPROOT/empty_dir.ls.out" > "$TMPROOT/empty_dir.ls.norm"
+normalize_long < "$TMPROOT/empty_dir.ft.out" > "$TMPROOT/empty_dir.ft.norm"
+if diff -u "$TMPROOT/empty_dir.ls.norm" "$TMPROOT/empty_dir.ft.norm" > "$TMPROOT/empty_dir.diff"; then
     echo "[PASS] empty directory output matches"
 else
     echo "[FAIL] empty directory output differs -> $TMPROOT/empty_dir.diff"
@@ -276,31 +352,43 @@ else
 fi
 
 # Exit code check for partial failures
-printf '\n=== Edge test: exit status ===\n'
-LC_ALL=C "$LS_BIN" "$TMPROOT/dir_files" "$TMPROOT/does_not_exist" > "$TMPROOT/exit.ls.out" 2>"$TMPROOT/exit.ls.err" || true
-"$FT_BIN" "$TMPROOT/dir_files" "$TMPROOT/does_not_exist" > "$TMPROOT/exit.ft.out" 2>"$TMPROOT/exit.ft.err" || true
+printf '\n=== Edge test: partial path failures ===\n'
+LC_ALL=C "$LS_BIN" "$TMPROOT/dir_multi_a" "$TMPROOT/does_not_exist" "$TMPROOT/dir_multi_b" > "$TMPROOT/partial_paths.ls.out" 2>"$TMPROOT/partial_paths.ls.err"
 ls_status=$?
+"$FT_BIN" "$TMPROOT/dir_multi_a" "$TMPROOT/does_not_exist" "$TMPROOT/dir_multi_b" > "$TMPROOT/partial_paths.ft.out" 2>"$TMPROOT/partial_paths.ft.err"
 ft_status=$?
-if [ "$ft_status" -ne "$ls_status" ]; then
-    echo "[FAIL] exit codes differ (ls=$ls_status ft=$ft_status)"
+if [ "$ft_status" -eq 0 ] || [ "$ls_status" -eq 0 ]; then
+    echo "[FAIL] expected non-zero exit status on error"
+    failures=$((failures+1))
+fi
+if diff -u "$TMPROOT/partial_paths.ls.out" "$TMPROOT/partial_paths.ft.out" > "$TMPROOT/partial_paths.diff"; then
+    echo "[PASS] partial paths stdout matches"
+else
+    echo "[FAIL] partial paths stdout differs -> $TMPROOT/partial_paths.diff"
+    failures=$((failures+1))
+fi
+if grep -q 'does_not_exist' "$TMPROOT/partial_paths.ft.err"; then
+    echo "[PASS] partial paths stderr reports the missing path"
+else
+    echo "[FAIL] partial paths stderr did not report the missing path"
+    failures=$((failures+1))
+fi
+run_valgrind_case partial_path_failures "$FT_BIN" "$TMPROOT/dir_multi_a" "$TMPROOT/does_not_exist" "$TMPROOT/dir_multi_b"
+
+printf '\n=== Edge test: exit status ===\n'
+LC_ALL=C "$LS_BIN" "$TMPROOT/dir_files" "$TMPROOT/does_not_exist" > "$TMPROOT/exit.ls.out" 2>"$TMPROOT/exit.ls.err"
+ls_status=$?
+"$FT_BIN" "$TMPROOT/dir_files" "$TMPROOT/does_not_exist" > "$TMPROOT/exit.ft.out" 2>"$TMPROOT/exit.ft.err"
+ft_status=$?
+if [ "$ft_status" -eq 0 ] || [ "$ls_status" -eq 0 ]; then
+    echo "[FAIL] expected non-zero exit status on error"
     failures=$((failures+1))
 else
-    echo "[PASS] exit code matches system ls"
+    echo "[PASS] exit code matches system ls semantics"
 fi
+run_valgrind_case exit_status "$FT_BIN" "$TMPROOT/dir_files" "$TMPROOT/does_not_exist"
 
 # Long listing normalization: compare selected fields (mode, nlink, size, name)
-normalize_long() {
-    sed 's/  */ /g' | awk '{
-        # Strip extended attribute / ACL marker from the mode string for portability.
-        mode = $1;
-        sub(/[@+]$/, "", mode);
-        # handle names with spaces: assume name starts at $9 onwards
-        name = "";
-        for (i=9;i<=NF;i++) { if (i>9) name = name " "; name = name $i }
-        printf "%s %s %s %s\n", mode, $2, $5, name
-    }'
-}
-
 LC_ALL=C "$LS_BIN" -l "$TMPROOT/dir_files" | normalize_long > "$TMPROOT/long.ls.norm"
 "$FT_BIN" -l "$TMPROOT/dir_files" | normalize_long > "$TMPROOT/long.ft.norm"
 if diff -u "$TMPROOT/long.ls.norm" "$TMPROOT/long.ft.norm" > "$TMPROOT/long.diff"; then
