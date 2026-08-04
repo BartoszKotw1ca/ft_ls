@@ -214,7 +214,8 @@ static int  list_directory(const char *path, const t_options *opts,
         {
             if (S_ISDIR(entries[i].st.st_mode)
                 && strcmp(entries[i].name, ".")  != 0
-                && strcmp(entries[i].name, "..") != 0)
+                && strcmp(entries[i].name, "..") != 0
+                && ((opts->a && !(opts->r && opts->t)) || entries[i].name[0] != '.'))
             {
                 printf("\n");
                 if (list_path(entries[i].fullpath, opts, 1) != 0)

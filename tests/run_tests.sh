@@ -54,6 +54,14 @@ mkdir -p "$TMPROOT/dir_spaces"
 mkdir -p "$TMPROOT/dir_symlinks/target_dir"
 mkdir -p "$TMPROOT/dir_unreadable"
 mkdir -p "$TMPROOT/dir_many"
+mkdir -p "$TMPROOT/dir_sort"
+mkdir -p "$TMPROOT/dir_time_tie"
+mkdir -p "$TMPROOT/dir_grouped/visible_dir"
+mkdir -p "$TMPROOT/dir_grouped/.hidden_dir"
+mkdir -p "$TMPROOT/dir_multi_a"
+mkdir -p "$TMPROOT/dir_multi_b"
+mkdir -p "$TMPROOT/dir_dates"
+mkdir -p "$TMPROOT/dir_empty"
 
 # files
 echo "hello" > "$TMPROOT/dir_files/foo.txt"
@@ -87,6 +95,31 @@ while [ $i -lt 120 ]; do
     printf "file%03d" "$i" > "$TMPROOT/dir_many/file$i.txt"
     i=$((i+1))
 done
+
+# sorting fixtures
+printf 'oldest\n' > "$TMPROOT/dir_sort/oldest.txt"
+printf 'middle\n' > "$TMPROOT/dir_sort/middle.txt"
+printf 'newest\n' > "$TMPROOT/dir_sort/newest.txt"
+touch -t 202001010101 "$TMPROOT/dir_sort/oldest.txt"
+touch -t 202401010101 "$TMPROOT/dir_sort/middle.txt"
+touch -t 202501010101 "$TMPROOT/dir_sort/newest.txt"
+
+printf 'tie1\n' > "$TMPROOT/dir_time_tie/alpha_tie.txt"
+printf 'tie2\n' > "$TMPROOT/dir_time_tie/beta_tie.txt"
+touch -t 202401010101 "$TMPROOT/dir_time_tie/alpha_tie.txt"
+touch -t 202401010101 "$TMPROOT/dir_time_tie/beta_tie.txt"
+
+printf 'visible\n' > "$TMPROOT/dir_grouped/visible.txt"
+printf 'hidden\n' > "$TMPROOT/dir_grouped/.hidden.txt"
+printf 'child\n' > "$TMPROOT/dir_grouped/visible_dir/child.txt"
+
+printf 'file-a\n' > "$TMPROOT/dir_multi_a/fileA.txt"
+printf 'file-b\n' > "$TMPROOT/dir_multi_b/fileB.txt"
+
+printf 'old\n' > "$TMPROOT/dir_dates/old.txt"
+printf 'recent\n' > "$TMPROOT/dir_dates/recent.txt"
+touch -t 202001010101 "$TMPROOT/dir_dates/old.txt"
+touch -t 202501010101 "$TMPROOT/dir_dates/recent.txt"
 
 # helper: run pair of commands and compare outputs
 run_and_compare() {
@@ -156,6 +189,48 @@ run_and_compare many "-1" "" "$TMPROOT/dir_many"
 # File argument (single file)
 run_and_compare filearg "-1" "" "$TMPROOT/dir_files/foo.txt"
 
+# Sorting tests
+run_and_compare time_sort "-t" "-t" "$TMPROOT/dir_sort"
+run_and_compare reverse_sort "-r" "-r" "$TMPROOT/dir_sort"
+run_and_compare reverse_time_sort "-rt" "-rt" "$TMPROOT/dir_sort"
+run_and_compare time_tiebreak "-t" "-t" "$TMPROOT/dir_time_tie"
+
+# Flag grouping / combination tests
+run_and_compare grouped_options "-laR" "-laR" "$TMPROOT/dir_grouped"
+run_and_compare separated_options "-l -a -r -t -R" "-l -a -r -t -R" "$TMPROOT/dir_grouped"
+
+# Multiple path and mixed input tests
+printf '\n=== Test: multiple_dirs (ls_flags: -1) (ft_flags: ) on %s %s ===\n' "$TMPROOT/dir_multi_a" "$TMPROOT/dir_multi_b"
+LC_ALL=C "$LS_BIN" -1 "$TMPROOT/dir_multi_a" "$TMPROOT/dir_multi_b" > "$RESULTS_DIR/multiple_dirs.ls.out" 2>&1
+"$FT_BIN" "$TMPROOT/dir_multi_a" "$TMPROOT/dir_multi_b" > "$RESULTS_DIR/multiple_dirs.ft.out" 2>"$RESULTS_DIR/multiple_dirs.ft.err"
+if diff -u "$RESULTS_DIR/multiple_dirs.ls.out" "$RESULTS_DIR/multiple_dirs.ft.out" > "$RESULTS_DIR/multiple_dirs.diff"; then
+    echo "[PASS] output match"
+else
+    echo "[FAIL] output differs -> $RESULTS_DIR/multiple_dirs.diff"
+    failures=$((failures+1))
+fi
+
+printf '\n=== Test: mixed_files_dirs (ls_flags: -1) (ft_flags: ) on mixed inputs ===\n'
+LC_ALL=C "$LS_BIN" -1 "$TMPROOT/dir_multi_a/fileA.txt" "$TMPROOT/dir_multi_a" "$TMPROOT/dir_multi_b/fileB.txt" "$TMPROOT/dir_multi_b" > "$RESULTS_DIR/mixed_files_dirs.ls.out" 2>&1
+"$FT_BIN" "$TMPROOT/dir_multi_a/fileA.txt" "$TMPROOT/dir_multi_a" "$TMPROOT/dir_multi_b/fileB.txt" "$TMPROOT/dir_multi_b" > "$RESULTS_DIR/mixed_files_dirs.ft.out" 2>"$RESULTS_DIR/mixed_files_dirs.ft.err"
+if diff -u "$RESULTS_DIR/mixed_files_dirs.ls.out" "$RESULTS_DIR/mixed_files_dirs.ft.out" > "$RESULTS_DIR/mixed_files_dirs.diff"; then
+    echo "[PASS] output match"
+else
+    echo "[FAIL] output differs -> $RESULTS_DIR/mixed_files_dirs.diff"
+    failures=$((failures+1))
+fi
+
+# Default path fallback
+printf '\n=== Test: default_path (ls_flags: ) (ft_flags: ) on . ===\n'
+( cd "$TMPROOT" && LC_ALL=C "$LS_BIN" > "$RESULTS_DIR/default_path.ls.out" 2>&1 )
+( cd "$TMPROOT" && "$FT_BIN" > "$RESULTS_DIR/default_path.ft.out" 2>"$RESULTS_DIR/default_path.ft.err" )
+if diff -u "$RESULTS_DIR/default_path.ls.out" "$RESULTS_DIR/default_path.ft.out" > "$RESULTS_DIR/default_path.diff"; then
+    echo "[PASS] output match"
+else
+    echo "[FAIL] output differs -> $RESULTS_DIR/default_path.diff"
+    failures=$((failures+1))
+fi
+
 # Tests that check behavior rather than exact textual match
 printf '\n=== Edge test: unreadable directory ===\n'
 LC_ALL=C "$LS_BIN" -1 "$TMPROOT/dir_unreadable" > "$TMPROOT/unreadable.ls.out" 2>&1 || true
@@ -165,6 +240,52 @@ if [ -s "$TMPROOT/unreadable.ft.err" ] || [ -s "$TMPROOT/unreadable.ls.out" ]; t
 else
     echo "[FAIL] unreadable directory produced no error output"
     failures=$((failures+1))
+fi
+
+# Broken symlink handling
+printf '\n=== Edge test: broken symlink ===\n'
+LC_ALL=C "$LS_BIN" -l "$TMPROOT/dir_symlinks" > "$TMPROOT/broken_symlink.ls.out" 2>&1
+"$FT_BIN" -l "$TMPROOT/dir_symlinks" > "$TMPROOT/broken_symlink.ft.out" 2>"$TMPROOT/broken_symlink.ft.err"
+if diff -u "$TMPROOT/broken_symlink.ls.out" "$TMPROOT/broken_symlink.ft.out" > "$TMPROOT/broken_symlink.diff"; then
+    echo "[PASS] broken symlink output matches"
+else
+    echo "[FAIL] broken symlink output differs -> $TMPROOT/broken_symlink.diff"
+    failures=$((failures+1))
+fi
+
+# Old-file date formatting
+printf '\n=== Edge test: old file date ===\n'
+LC_ALL=C "$LS_BIN" -l "$TMPROOT/dir_dates" > "$TMPROOT/old_file_date.ls.out" 2>&1
+"$FT_BIN" -l "$TMPROOT/dir_dates" > "$TMPROOT/old_file_date.ft.out" 2>"$TMPROOT/old_file_date.ft.err"
+if diff -u "$TMPROOT/old_file_date.ls.out" "$TMPROOT/old_file_date.ft.out" > "$TMPROOT/old_file_date.diff"; then
+    echo "[PASS] old file date output matches"
+else
+    echo "[FAIL] old file date output differs -> $TMPROOT/old_file_date.diff"
+    failures=$((failures+1))
+fi
+
+# Empty directory handling
+printf '\n=== Edge test: empty directory ===\n'
+LC_ALL=C "$LS_BIN" -l "$TMPROOT/dir_empty" > "$TMPROOT/empty_dir.ls.out" 2>&1
+"$FT_BIN" -l "$TMPROOT/dir_empty" > "$TMPROOT/empty_dir.ft.out" 2>"$TMPROOT/empty_dir.ft.err"
+if diff -u "$TMPROOT/empty_dir.ls.out" "$TMPROOT/empty_dir.ft.out" > "$TMPROOT/empty_dir.diff"; then
+    echo "[PASS] empty directory output matches"
+else
+    echo "[FAIL] empty directory output differs -> $TMPROOT/empty_dir.diff"
+    failures=$((failures+1))
+fi
+
+# Exit code check for partial failures
+printf '\n=== Edge test: exit status ===\n'
+LC_ALL=C "$LS_BIN" "$TMPROOT/dir_files" "$TMPROOT/does_not_exist" > "$TMPROOT/exit.ls.out" 2>"$TMPROOT/exit.ls.err" || true
+"$FT_BIN" "$TMPROOT/dir_files" "$TMPROOT/does_not_exist" > "$TMPROOT/exit.ft.out" 2>"$TMPROOT/exit.ft.err" || true
+ls_status=$?
+ft_status=$?
+if [ "$ft_status" -ne "$ls_status" ]; then
+    echo "[FAIL] exit codes differ (ls=$ls_status ft=$ft_status)"
+    failures=$((failures+1))
+else
+    echo "[PASS] exit code matches system ls"
 fi
 
 # Long listing normalization: compare selected fields (mode, nlink, size, name)
