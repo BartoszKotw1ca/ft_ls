@@ -1,13 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                          :::      :::::::: */
+/*   ft_ls.h                                              :+:      :+:    :+: */
+/*                                                        +:+ +:+         +:+ */
+/*   By: login <login@student.42.fr>                       +#+  +:+       +#+ */
+/*                                                          +#+#+#+#+#+   +#+ */
+/*   Created: 2026/08/09 12:00:00 by login                         #+#    #+# */
+/*   Updated: 2026/08/09 12:00:00 by login                  ###   ########.fr */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/ft_ls.h"
 
-/*
-** ft_error – prints a diagnostic to stderr in the same format as ls:
-**
-**   ft_ls: <path>: <system error message>
-**
-** It does NOT exit; the caller decides whether to continue or stop.
-*/
-void    ft_error(const char *path)
+void	ft_error(const char *path)
 {
-    fprintf(stderr, "ft_ls: %s: %s\n", path, strerror(errno));
+	fprintf(stderr, "ft_ls: %s: %s\n", path, strerror(errno));
 }

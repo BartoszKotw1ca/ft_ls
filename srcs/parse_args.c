@@ -1,120 +1,100 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                          :::      :::::::: */
+/*   ft_ls.h                                              :+:      :+:    :+: */
+/*                                                        +:+ +:+         +:+ */
+/*   By: login <login@student.42.fr>                       +#+  +:+       +#+ */
+/*                                                          +#+#+#+#+#+   +#+ */
+/*   Created: 2026/08/09 12:00:00 by login                         #+#    #+# */
+/*   Updated: 2026/08/09 12:00:00 by login                  ###   ########.fr */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/ft_ls.h"
 
-/*
-** ─── HELPERS ─────────────────────────────────────────────────────────────────
-*/
-
-/* Apply a single option character to *opts.
-** Returns 0 on success, -1 if the character is not a recognised flag. */
-static int  apply_flag(char c, t_options *opts)
+static int	apply_flag(char c, t_options *opts)
 {
-    if (c == 'l') { opts->l = 1; return (0); }
-    if (c == 'R') { opts->R = 1; return (0); }
-    if (c == 'a') { opts->a = 1; return (0); }
-    if (c == 'r') { opts->r = 1; return (0); }
-    if (c == 't') { opts->t = 1; return (0); }
-    return (-1);
+	if (c == 'l')
+		opts->l = 1;
+	else if (c == 'R')
+		opts->big_r = 1;
+	else if (c == 'a')
+		opts->a = 1;
+	else if (c == 'r')
+		opts->r = 1;
+	else if (c == 't')
+		opts->t = 1;
+	else
+		return (-1);
+	return (0);
 }
 
-/* Print the same illegal-option error ls itself prints, then return 1. */
-static int  illegal_option(char c)
+static int	illegal_option(char c)
 {
-    fprintf(stderr, "ft_ls: illegal option -- %c\n", c);
-    fprintf(stderr, "usage: ft_ls [-Ralrt] [file ...]\n");
-    return (1);
+	fprintf(stderr, "ft_ls: illegal option -- %c\n", c);
+	fprintf(stderr, "usage: ft_ls [-Ralrt] [file ...]\n");
+	return (1);
 }
 
-/*
-** ─── PATH LIST HELPERS ───────────────────────────────────────────────────────
-** We collect non-option arguments into a dynamically grown array.
-*/
-
-static int  paths_push(char ***paths, int *npath, int *cap, char *arg)
+static int	paths_push(char ***paths, int *npath, int *cap, char *arg)
 {
-    char **tmp;
+	char	**tmp;
 
-    if (*npath == *cap)
-    {
-        *cap = (*cap == 0) ? 8 : *cap * 2;
-        tmp = realloc(*paths, (size_t)(*cap) * sizeof(char *));
-        if (!tmp)
-        {
-            perror("ft_ls: realloc");
-            return (-1);
-        }
-        *paths = tmp;
-    }
-    (*paths)[(*npath)++] = arg;   /* argv strings live for the process lifetime */
-    return (0);
+	if (*npath == *cap)
+	{
+		if (*cap == 0)
+			*cap = 8;
+		else
+			*cap = *cap * 2;
+		tmp = realloc(*paths, (size_t)(*cap) * sizeof(char *));
+		if (!tmp)
+		{
+			perror("ft_ls: realloc");
+			return (-1);
+		}
+		*paths = tmp;
+	}
+	(*paths)[(*npath)++] = arg;
+	return (0);
 }
 
-/*
-** ─── MAIN PARSER ─────────────────────────────────────────────────────────────
-**
-** Iterates over argv[1..argc-1].
-**
-** • An argument that starts with '-' and has at least one more character is
-**   treated as a flag cluster (e.g. "-lRart").
-**
-** • The special argument "--" ends option parsing; everything after it is a
-**   path, even if it starts with '-'.
-**
-** • A bare '-' (just a hyphen) is treated as a path, like ls does.
-**
-** • Anything else is a path.
-**
-** Returns 0 on success, 1 on illegal option (caller should exit(1)).
-*/
-int parse_args(int argc, char **argv,
-               t_options *opts, char ***paths, int *npath)
+static int	parse_cluster(char *arg, t_options *opts)
 {
-    int  i;
-    int  j;
-    int  cap;
-    int  parsing_opts;  /* becomes 0 after "--" */
+	int	j;
 
-    /* Zero-initialise the options struct */
-    opts->l = 0;
-    opts->R = 0;
-    opts->a = 0;
-    opts->r = 0;
-    opts->t = 0;
+	j = 1;
+	while (arg[j])
+	{
+		if (apply_flag(arg[j], opts) == -1)
+			return (illegal_option(arg[j]));
+		j++;
+	}
+	return (0);
+}
 
-    *paths  = NULL;
-    *npath  = 0;
-    cap     = 0;
-    parsing_opts = 1;
+int	parse_args(char **argv, t_options *opts, char ***paths, int *npath)
+{
+	int	i;
+	int	cap;
+	int	p_opts;
 
-    i = 1;
-    while (i < argc)
-    {
-        /* End-of-options sentinel */
-        if (parsing_opts && strcmp(argv[i], "--") == 0)
-        {
-            parsing_opts = 0;
-            i++;
-            continue;
-        }
-
-        /* Flag cluster: starts with '-', has at least one char after it,
-           and we have not yet seen "--" */
-        if (parsing_opts && argv[i][0] == '-' && argv[i][1] != '\0')
-        {
-            j = 1;
-            while (argv[i][j])
-            {
-                if (apply_flag(argv[i][j], opts) == -1)
-                    return (illegal_option(argv[i][j]));
-                j++;
-            }
-        }
-        else
-        {
-            /* Path argument (includes bare "-") */
-            if (paths_push(paths, npath, &cap, argv[i]) == -1)
-                return (1);
-        }
-        i++;
-    }
-    return (0);
+	ft_bzero(opts, sizeof(t_options));
+	*paths = NULL;
+	*npath = 0;
+	cap = 0;
+	p_opts = 1;
+	i = 0;
+	while (argv[++i])
+	{
+		if (p_opts && strcmp(argv[i], "--") == 0)
+			p_opts = 0;
+		else if (p_opts && argv[i][0] == '-' && argv[i][1] != '\0')
+		{
+			if (parse_cluster(argv[i], opts) != 0)
+				return (1);
+		}
+		else if (paths_push(paths, npath, &cap, argv[i]) == -1)
+			return (1);
+	}
+	return (0);
 }

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                          :::      :::::::: */
-/*   ft_ls.h                                              :+:      :+:    :+: */
+/*   ft_ls_snippet.c                                      :+:      :+:    :+: */
 /*                                                        +:+ +:+         +:+ */
 /*   By: login <login@student.42.fr>                       +#+  +:+       +#+ */
 /*                                                          +#+#+#+#+#+   +#+ */
@@ -12,14 +12,41 @@
 
 #include "../includes/ft_ls.h"
 
-void	print_entries_short(t_entry *entries, int n)
+void	set_user_permissions(char *str, mode_t mode)
 {
-	int	i;
+	str[1] = '-';
+	str[2] = '-';
+	str[3] = '-';
+	if (mode & S_IRUSR)
+		str[1] = 'r';
+	if (mode & S_IWUSR)
+		str[2] = 'w';
+	if (mode & S_IXUSR)
+		str[3] = 'x';
+}
 
-	i = 0;
-	while (i < n)
-	{
-		printf("%s\n", entries[i].name);
-		i++;
-	}
+void	set_group_permissions(char *str, mode_t mode)
+{
+	str[4] = '-';
+	str[5] = '-';
+	str[6] = '-';
+	if (mode & S_IRGRP)
+		str[4] = 'r';
+	if (mode & S_IWGRP)
+		str[5] = 'w';
+	if (mode & S_IXGRP)
+		str[6] = 'x';
+}
+
+void	set_other_permissions(char *str, mode_t mode)
+{
+	str[7] = '-';
+	str[8] = '-';
+	str[9] = '-';
+	if (mode & S_IROTH)
+		str[7] = 'r';
+	if (mode & S_IWOTH)
+		str[8] = 'w';
+	if (mode & S_IXOTH)
+		str[9] = 'x';
 }

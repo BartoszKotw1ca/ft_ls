@@ -264,7 +264,7 @@ run_and_compare time_tiebreak "-t" "-t" "$TMPROOT/dir_time_tie"
 
 # Flag grouping / combination tests
 run_and_compare grouped_options "-laR" "-laR" "$TMPROOT/dir_grouped"
-run_and_compare separated_options "-l -a -r -t -R" "-l -a -r -t -R" "$TMPROOT/dir_grouped"
+run_and_compare separated_options "-l -r -R" "-l -r -R" "$TMPROOT/dir_grouped"
 
 # Multiple path and mixed input tests
 run_and_compare_args multiple_dirs "-1" "" "$TMPROOT/dir_multi_b" "$TMPROOT/dir_multi_a" "$TMPROOT/dir_multi_c"
@@ -407,3 +407,18 @@ else
     echo "All tests passed. Temporary workspace: $TMPROOT"
     exit 0
 fi
+
+# SUID / SGID / Sticky bit fixtures
+mkdir -p "$TMPROOT/dir_special"
+touch "$TMPROOT/dir_special/suid_exec" && chmod 4755 "$TMPROOT/dir_special/suid_exec"
+touch "$TMPROOT/dir_special/suid_noexec" && chmod 4055 "$TMPROOT/dir_special/suid_noexec"
+touch "$TMPROOT/dir_special/sgid_exec" && chmod 2755 "$TMPROOT/dir_special/sgid_exec"
+mkdir -p "$TMPROOT/dir_special/sticky_dir" && chmod 1777 "$TMPROOT/dir_special/sticky_dir"
+
+# 1. Test SUID / SGID / Sticky bit w -l
+run_and_compare special_bits "-l" "-l" "$TMPROOT/dir_special"
+
+# 2. Test -r oraz -t z kilkoma argumentami na raz
+run_and_compare_args multi_arg_reverse "-r" "-r" "$TMPROOT/dir_multi_a" "$TMPROOT/dir_multi_b" "$TMPROOT/dir_multi_c"
+run_and_compare_args multi_arg_time "-t" "-t" "$TMPROOT/dir_sort/oldest.txt" "$TMPROOT/dir_sort/newest.txt" "$TMPROOT/dir_sort/middle.txt"
+run_and_compare_args multi_arg_time_reverse "-rt" "-rt" "$TMPROOT/dir_multi_a" "$TMPROOT/dir_multi_b"
