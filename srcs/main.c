@@ -68,15 +68,30 @@ static void	print_all(t_arglist *al, t_options *opts, int npath, int *exit_code)
 	}
 }
 
-static void	execute_ls(char **paths, int npath, t_options *opts, int *exit_code)
+static void	execute_ls(char **paths, int npath, t_options *opts,
+		int *exit_code)
 {
 	t_arglist	al;
 
 	classify(paths, npath, &al, exit_code);
 	if (al.nfiles > 1)
-		qsort(al.files, (size_t)al.nfiles, sizeof(char *), cmp_alpha);
+	{
+		if (opts->t)
+			qsort(al.files, (size_t)al.nfiles, sizeof(char *), cmp_time_main);
+		else
+			qsort(al.files, (size_t)al.nfiles, sizeof(char *), cmp_alpha);
+		if (opts->r)
+			reverse_paths_main(al.files, al.nfiles);
+	}
 	if (al.ndirs > 1)
-		qsort(al.dirs, (size_t)al.ndirs, sizeof(char *), cmp_alpha);
+	{
+		if (opts->t)
+			qsort(al.dirs, (size_t)al.ndirs, sizeof(char *), cmp_time_main);
+		else
+			qsort(al.dirs, (size_t)al.ndirs, sizeof(char *), cmp_alpha);
+		if (opts->r)
+			reverse_paths_main(al.dirs, al.ndirs);
+	}
 	print_all(&al, opts, npath, exit_code);
 	free(al.files);
 	free(al.dirs);

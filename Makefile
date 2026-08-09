@@ -20,6 +20,7 @@ SRCS = $(SRC_DIR)/main.c \
 	   $(SRC_DIR)/stat_utils.c \
 	   $(SRC_DIR)/print_long.c \
 	   $(SRC_DIR)/permissions_utils.c \
+	   $(SRC_DIR)/main_utils.c \
 	   $(SRC_DIR)/utils.c
 
 OBJS = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRCS))

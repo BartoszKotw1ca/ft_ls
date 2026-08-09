@@ -81,5 +81,7 @@ DIR			*open_directory(const char *path, int *out_count);
 void		set_other_permissions(char *str, mode_t mode);
 void		set_group_permissions(char *str, mode_t mode);
 void		set_user_permissions(char *str, mode_t mode);
+int			cmp_time_main(const void *a, const void *b);
+void		reverse_paths_main(char **paths, int n);
 
 #endif /* FT_LS_H */
