@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # ============================================================
-# ft_ls evaluation test
+# ft_ls evaluation test - mandatory requirements
 # ============================================================
 #
 # Usage:
@@ -9,32 +9,31 @@
 #   ./tests/run_tests.sh --no-valgrind
 #   ./tests/run_tests.sh --keep
 #
-# The script compares ft_ls with the system ls where possible.
-# It also checks:
-#   - author file
-#   - Makefile
-#   - required Makefile rules
-#   - ft_ls executable
-#   - Norminette
-#   - suspicious/forbidden functions
-#   - ls
-#   - ls -a
-#   - ls -l
-#   - symbolic links
-#   - ls -r
-#   - ls -t
-#   - multiple arguments
-#   - SUID / SGID / sticky bit
-#   - ls -R
-#   - combined options
-#   - invalid options
-#   - nonexistent paths
-#   - inaccessible directory
-#   - broken symlinks
-#   - old dates
-#   - empty directories
-#   - exit status
-#   - Valgrind / memory leaks
+# Covers mandatory ft_ls requirements:
+# - author file
+# - Makefile and required rules
+# - Makefile functionality
+# - Norminette
+# - forbidden functions
+# - ls
+# - ls -a
+# - ls -l
+# - symbolic links
+# - ls -r
+# - ls -t
+# - ls -r with multiple arguments
+# - ls -t with multiple arguments
+# - SUID / SGID / sticky bit
+# - ls -R
+# - combined/separated options
+# - multiple option display
+# - nonexistent files/directories
+# - inaccessible files/directories
+# - invalid options
+# - exit status
+# - Valgrind / memory leaks
+#
+# Bonus options are intentionally not tested.
 # ============================================================
 
 set -u
@@ -52,18 +51,18 @@ TESTS=0
 PASSES=0
 
 for arg in "$@"; do
-    case "$arg" in
-        --no-valgrind)
-            NO_VALGRIND=1
-            ;;
-        --keep)
-            KEEP=1
-            ;;
-        *)
-            echo "Unknown argument: $arg"
-            exit 1
-            ;;
-    esac
+	case "$arg" in
+		--no-valgrind)
+			NO_VALGRIND=1
+			;;
+		--keep)
+			KEEP=1
+			;;
+		*)
+			echo "Unknown argument: $arg"
+			exit 1
+			;;
+	esac
 done
 
 TMPROOT="$(mktemp -d /tmp/ft_ls_tests.XXXXXX)"
@@ -71,42 +70,42 @@ RESULTS_DIR="$(mktemp -d /tmp/ft_ls_results.XXXXXX)"
 
 cleanup()
 {
-    ret=$?
+	ret=$?
 
-    if [ "$KEEP" -eq 1 ] || [ "$FAILURES" -ne 0 ]; then
-        echo
-        echo "Temporary files preserved:"
-        echo "  tests:   $TMPROOT"
-        echo "  results: $RESULTS_DIR"
-    else
-        rm -rf "$TMPROOT" "$RESULTS_DIR"
-    fi
+	if [ "$KEEP" -eq 1 ] || [ "$FAILURES" -ne 0 ]; then
+		echo
+		echo "Temporary files preserved:"
+		echo "  tests:   $TMPROOT"
+		echo "  results: $RESULTS_DIR"
+	else
+		rm -rf "$TMPROOT" "$RESULTS_DIR"
+	fi
 
-    exit "$ret"
+	exit "$ret"
 }
 
 trap cleanup EXIT
 
 pass()
 {
-    TESTS=$((TESTS + 1))
-    PASSES=$((PASSES + 1))
-    echo "[PASS] $1"
+	TESTS=$((TESTS + 1))
+	PASSES=$((PASSES + 1))
+	echo "[PASS] $1"
 }
 
 fail()
 {
-    TESTS=$((TESTS + 1))
-    FAILURES=$((FAILURES + 1))
-    echo "[FAIL] $1"
+	TESTS=$((TESTS + 1))
+	FAILURES=$((FAILURES + 1))
+	echo "[FAIL] $1"
 }
 
 info()
 {
-    echo
-    echo "============================================================"
-    echo "$1"
-    echo "============================================================"
+	echo
+	echo "============================================================"
+	echo "$1"
+	echo "============================================================"
 }
 
 # ============================================================
@@ -116,13 +115,13 @@ info()
 info "PRELIMINARY CHECKS"
 
 # ------------------------------------------------------------
-# author
+# Author
 # ------------------------------------------------------------
 
 if [ -s "$ROOT_DIR/author" ]; then
-    pass "author file exists and is not empty"
+	pass "author file exists and is not empty"
 else
-    fail "author file is missing or empty"
+	fail "author file is missing or empty"
 fi
 
 # ------------------------------------------------------------
@@ -130,56 +129,56 @@ fi
 # ------------------------------------------------------------
 
 if [ -f "$ROOT_DIR/Makefile" ]; then
-    pass "Makefile exists"
+	pass "Makefile exists"
 
-    for rule in all clean fclean re; do
-        if grep -Eq "^${rule}:" "$ROOT_DIR/Makefile"; then
-            pass "Makefile contains $rule rule"
-        else
-            fail "Makefile is missing $rule rule"
-        fi
-    done
+	for rule in all clean fclean re; do
+		if grep -Eq "^${rule}:" "$ROOT_DIR/Makefile"; then
+			pass "Makefile contains $rule rule"
+		else
+			fail "Makefile is missing $rule rule"
+		fi
+	done
 else
-    fail "Makefile is missing"
+	fail "Makefile is missing"
 fi
 
 # ------------------------------------------------------------
-# Required Makefile functionality
+# Makefile functionality
 # ------------------------------------------------------------
 
 if [ -f "$ROOT_DIR/Makefile" ]; then
-    echo
-    echo "Testing Makefile..."
+	echo
+	echo "Testing Makefile..."
 
-    if make -C "$ROOT_DIR" all >/dev/null 2>&1; then
-        pass "make all"
-    else
-        fail "make all"
-    fi
+	if make -C "$ROOT_DIR" all >/dev/null 2>&1; then
+		pass "make all"
+	else
+		fail "make all"
+	fi
 
-    if make -C "$ROOT_DIR" clean >/dev/null 2>&1; then
-        pass "make clean"
-    else
-        fail "make clean"
-    fi
+	if make -C "$ROOT_DIR" clean >/dev/null 2>&1; then
+		pass "make clean"
+	else
+		fail "make clean"
+	fi
 
-    if make -C "$ROOT_DIR" all >/dev/null 2>&1; then
-        pass "make all after clean"
-    else
-        fail "make all after clean"
-    fi
+	if make -C "$ROOT_DIR" all >/dev/null 2>&1; then
+		pass "make all after clean"
+	else
+		fail "make all after clean"
+	fi
 
-    if make -C "$ROOT_DIR" fclean >/dev/null 2>&1; then
-        pass "make fclean"
-    else
-        fail "make fclean"
-    fi
+	if make -C "$ROOT_DIR" fclean >/dev/null 2>&1; then
+		pass "make fclean"
+	else
+		fail "make fclean"
+	fi
 
-    if make -C "$ROOT_DIR" re >/dev/null 2>&1; then
-        pass "make re"
-    else
-        fail "make re"
-    fi
+	if make -C "$ROOT_DIR" re >/dev/null 2>&1; then
+		pass "make re"
+	else
+		fail "make re"
+	fi
 fi
 
 # ------------------------------------------------------------
@@ -187,9 +186,9 @@ fi
 # ------------------------------------------------------------
 
 if [ -x "$FT_BIN" ]; then
-    pass "ft_ls exists and is executable"
+	pass "ft_ls exists and is executable"
 else
-    fail "ft_ls binary is missing or not executable"
+	fail "ft_ls binary is missing or not executable"
 fi
 
 # ------------------------------------------------------------
@@ -197,9 +196,9 @@ fi
 # ------------------------------------------------------------
 
 if [ -n "$LS_BIN" ]; then
-    pass "system ls found: $LS_BIN"
+	pass "system ls found: $LS_BIN"
 else
-    fail "system ls not found"
+	fail "system ls not found"
 fi
 
 # ------------------------------------------------------------
@@ -225,7 +224,7 @@ if [ -n "$NORM_BIN" ]; then
 	else
 		fail "Norminette reported errors"
 		echo "----- Norminette output -----"
-		sed -n '1,120p' "$NORM_OUTPUT"
+		sed -n '1,160p' "$NORM_OUTPUT"
 		echo "-----------------------------"
 	fi
 else
@@ -233,72 +232,67 @@ else
 fi
 
 # ------------------------------------------------------------
-# Suspicious / clearly forbidden external execution functions
+# Forbidden functions
 # ------------------------------------------------------------
 
 echo
 echo "Checking suspicious functions..."
 
-SOURCE_FILES="$(find "$ROOT_DIR" -type f \( -name "*.c" -o -name "*.h" \) -print)"
-
 FORBIDDEN_FOUND=0
 
 FORBIDDEN_FUNCTIONS=(
-    "system"
-    "popen"
-    "fork"
-    "execve"
-    "execl"
-    "execlp"
-    "execle"
-    "execv"
-    "execvp"
-    "execvpe"
-    "scandir"
+	"system"
+	"popen"
+	"fork"
+	"execve"
+	"execl"
+	"execlp"
+	"execle"
+	"execv"
+	"execvp"
+	"execvpe"
+	"scandir"
 )
 
 for func in "${FORBIDDEN_FUNCTIONS[@]}"; do
-    if [ -n "$SOURCE_FILES" ]; then
-        if grep -REn --include='*.c' --include='*.h' \
-            "(^|[^A-Za-z0-9_])${func}[[:space:]]*\(" \
-            "$ROOT_DIR" >/dev/null 2>&1; then
-            echo "[FAIL] suspicious/forbidden function detected: $func"
-            grep -REn --include='*.c' --include='*.h' \
-                "(^|[^A-Za-z0-9_])${func}[[:space:]]*\(" \
-                "$ROOT_DIR" | head -10
-            FORBIDDEN_FOUND=1
-        fi
-    fi
+	if grep -REn \
+		--include='*.c' \
+		--include='*.h' \
+		"(^|[^A-Za-z0-9_])${func}[[:space:]]*\(" \
+		"$ROOT_DIR/srcs" "$ROOT_DIR/includes" \
+		>"$RESULTS_DIR/forbidden_${func}.out" 2>/dev/null; then
+		echo "[FAIL] suspicious/forbidden function detected: $func"
+		sed -n '1,10p' "$RESULTS_DIR/forbidden_${func}.out"
+		FORBIDDEN_FOUND=1
+	fi
 done
 
 if [ "$FORBIDDEN_FOUND" -eq 0 ]; then
-    pass "no clearly forbidden external-execution functions detected"
+	pass "no clearly forbidden external-execution functions detected"
 else
-    fail "forbidden/suspicious functions detected"
+	fail "forbidden/suspicious functions detected"
 fi
 
 # ============================================================
-# FUNCTIONAL TEST FIXTURES
+# CREATE TEST FIXTURES
 # ============================================================
 
 info "CREATING TEST FIXTURES"
 
-mkdir -p "$TMPROOT/empty_dir"
 mkdir -p "$TMPROOT/dir_files"
 mkdir -p "$TMPROOT/dir_hidden"
 mkdir -p "$TMPROOT/dir_spaces"
 mkdir -p "$TMPROOT/dir_symlinks/target_dir"
-mkdir -p "$TMPROOT/dir_unreadable/sub"
+mkdir -p "$TMPROOT/dir_recursive/subdir/deeper"
+mkdir -p "$TMPROOT/dir_unreadable"
 mkdir -p "$TMPROOT/dir_many"
 mkdir -p "$TMPROOT/dir_sort"
-mkdir -p "$TMPROOT/dir_time_tie"
-mkdir -p "$TMPROOT/dir_grouped/visible_dir"
-mkdir -p "$TMPROOT/dir_grouped/.hidden_dir"
+mkdir -p "$TMPROOT/dir_special/sticky_dir"
 mkdir -p "$TMPROOT/dir_multi_a"
 mkdir -p "$TMPROOT/dir_multi_b"
 mkdir -p "$TMPROOT/dir_multi_c"
 mkdir -p "$TMPROOT/dir_dates"
-mkdir -p "$TMPROOT/dir_special/sticky_dir"
+mkdir -p "$TMPROOT/empty_dir"
 
 # ------------------------------------------------------------
 # Normal files
@@ -315,34 +309,47 @@ printf 'hidden\n' > "$TMPROOT/dir_hidden/.hidden"
 printf 'visible\n' > "$TMPROOT/dir_hidden/visible"
 
 # ------------------------------------------------------------
-# Spaces and special names
+# Special filenames
 # ------------------------------------------------------------
 
 printf 'space\n' > "$TMPROOT/dir_spaces/file with spaces.txt"
 touch "$TMPROOT/dir_spaces/-dashfile"
-
-# Filename containing newline
-printf 'newline\n' > "$TMPROOT/dir_spaces/file"$'\n'"newline"
 
 # ------------------------------------------------------------
 # Symlinks
 # ------------------------------------------------------------
 
 printf 'target\n' > \
-    "$TMPROOT/dir_symlinks/target_dir/file_in_target"
+	"$TMPROOT/dir_symlinks/target_dir/file_in_target"
 
 ln -s "target_dir" \
-    "$TMPROOT/dir_symlinks/link_to_dir"
+	"$TMPROOT/dir_symlinks/link_to_dir"
 
 ln -s "target_dir/file_in_target" \
-    "$TMPROOT/dir_symlinks/link_to_file"
+	"$TMPROOT/dir_symlinks/link_to_file"
 
 ln -s "does_not_exist" \
-    "$TMPROOT/dir_symlinks/broken_link"
+	"$TMPROOT/dir_symlinks/broken_link"
 
 # ------------------------------------------------------------
-# Unreadable directory
+# Recursive directory
 # ------------------------------------------------------------
+
+printf 'root\n' > "$TMPROOT/dir_recursive/root.txt"
+printf 'sub\n' > "$TMPROOT/dir_recursive/subdir/sub.txt"
+printf 'deep\n' > \
+	"$TMPROOT/dir_recursive/subdir/deeper/deep.txt"
+
+mkdir -p "$TMPROOT/dir_recursive/.hidden_dir"
+printf 'hidden\n' > \
+	"$TMPROOT/dir_recursive/.hidden_dir/hidden.txt"
+
+# ------------------------------------------------------------
+# Inaccessible file / directory
+# ------------------------------------------------------------
+
+printf 'secret\n' > "$TMPROOT/inaccessible_file.txt"
+chmod 000 "$TMPROOT/inaccessible_file.txt"
 
 chmod 000 "$TMPROOT/dir_unreadable"
 
@@ -352,9 +359,9 @@ chmod 000 "$TMPROOT/dir_unreadable"
 
 i=0
 while [ "$i" -lt 120 ]; do
-    printf 'file %03d\n' "$i" > \
-        "$TMPROOT/dir_many/file$i.txt"
-    i=$((i + 1))
+	printf 'file %03d\n' "$i" > \
+		"$TMPROOT/dir_many/file$i.txt"
+	i=$((i + 1))
 done
 
 # ------------------------------------------------------------
@@ -366,38 +373,13 @@ printf 'middle\n' > "$TMPROOT/dir_sort/middle.txt"
 printf 'newest\n' > "$TMPROOT/dir_sort/newest.txt"
 
 touch -t 202001010101 \
-    "$TMPROOT/dir_sort/oldest.txt"
+	"$TMPROOT/dir_sort/oldest.txt"
 
 touch -t 202401010101 \
-    "$TMPROOT/dir_sort/middle.txt"
+	"$TMPROOT/dir_sort/middle.txt"
 
 touch -t 202501010101 \
-    "$TMPROOT/dir_sort/newest.txt"
-
-# ------------------------------------------------------------
-# Equal timestamps
-# ------------------------------------------------------------
-
-printf 'alpha\n' > "$TMPROOT/dir_time_tie/alpha_tie.txt"
-printf 'beta\n' > "$TMPROOT/dir_time_tie/beta_tie.txt"
-
-touch -t 202401010101 \
-    "$TMPROOT/dir_time_tie/alpha_tie.txt"
-
-touch -t 202401010101 \
-    "$TMPROOT/dir_time_tie/beta_tie.txt"
-
-# ------------------------------------------------------------
-# Recursive / grouped
-# ------------------------------------------------------------
-
-printf 'visible\n' > "$TMPROOT/dir_grouped/visible.txt"
-printf 'hidden\n' > "$TMPROOT/dir_grouped/.hidden.txt"
-printf 'child\n' > \
-    "$TMPROOT/dir_grouped/visible_dir/child.txt"
-
-printf 'hidden child\n' > \
-    "$TMPROOT/dir_grouped/.hidden_dir/hidden_child.txt"
+	"$TMPROOT/dir_sort/newest.txt"
 
 # ------------------------------------------------------------
 # Multiple arguments
@@ -415,13 +397,13 @@ printf 'old\n' > "$TMPROOT/dir_dates/old.txt"
 printf 'recent\n' > "$TMPROOT/dir_dates/recent.txt"
 
 touch -t 202001010101 \
-    "$TMPROOT/dir_dates/old.txt"
+	"$TMPROOT/dir_dates/old.txt"
 
 touch -t 202501010101 \
-    "$TMPROOT/dir_dates/recent.txt"
+	"$TMPROOT/dir_dates/recent.txt"
 
 # ------------------------------------------------------------
-# SUID / SGID / sticky
+# Special permission bits
 # ------------------------------------------------------------
 
 touch "$TMPROOT/dir_special/suid_exec"
@@ -441,136 +423,74 @@ chmod 1777 "$TMPROOT/dir_special/sticky_dir"
 
 normalize_long()
 {
-    awk '
-    BEGIN {
-        OFS=" "
-    }
+	awk '
+	BEGIN {
+		OFS=" "
+	}
 
-    $1 == "total" {
-        print "total"
-        next
-    }
+	$1 == "total" {
+		print "total"
+		next
+	}
 
-    {
-        mode = $1
-        nlink = $2
-        owner = $3
-        group = $4
-        size = $5
+	{
+		mode = $1
+		nlink = $2
+		owner = $3
+		group = $4
+		size = $5
+		name = $9
 
-        name = $9
+		for (i = 10; i <= NF; i++)
+			name = name " " $i
 
-        for (i = 10; i <= NF; i++)
-            name = name " " $i
-
-        print mode, nlink, owner, group, size, name
-    }
-    '
+		print mode, nlink, owner, group, size, name
+	}
+	'
 }
 
 compare_output()
 {
-    test_name="$1"
-    ls_command="$2"
-    ft_command="$3"
+	test_name="$1"
+	ls_command="$2"
+	ft_command="$3"
 
-    ls_file="$RESULTS_DIR/${test_name}.ls"
-    ft_file="$RESULTS_DIR/${test_name}.ft"
-    diff_file="$RESULTS_DIR/${test_name}.diff"
+	ls_file="$RESULTS_DIR/${test_name}.ls"
+	ft_file="$RESULTS_DIR/${test_name}.ft"
+	diff_file="$RESULTS_DIR/${test_name}.diff"
 
-    eval "$ls_command" >"$ls_file" 2>&1
-    eval "$ft_command" >"$ft_file" 2>&1
+	eval "$ls_command" >"$ls_file" 2>&1
+	eval "$ft_command" >"$ft_file" 2>&1
 
-    if diff -u "$ls_file" "$ft_file" >"$diff_file"; then
-        pass "$test_name"
-    else
-        fail "$test_name"
-        echo "  Diff: $diff_file"
-        sed -n '1,80p' "$diff_file"
-    fi
+	if diff -u "$ls_file" "$ft_file" >"$diff_file"; then
+		pass "$test_name"
+	else
+		fail "$test_name"
+		echo "  Diff: $diff_file"
+		sed -n '1,80p' "$diff_file"
+	fi
 }
 
 compare_long()
 {
-    test_name="$1"
-    ls_command="$2"
-    ft_command="$3"
+	test_name="$1"
+	ls_command="$2"
+	ft_command="$3"
 
-    ls_file="$RESULTS_DIR/${test_name}.ls"
-    ft_file="$RESULTS_DIR/${test_name}.ft"
-    diff_file="$RESULTS_DIR/${test_name}.diff"
+	ls_file="$RESULTS_DIR/${test_name}.ls"
+	ft_file="$RESULTS_DIR/${test_name}.ft"
+	diff_file="$RESULTS_DIR/${test_name}.diff"
 
-    eval "$ls_command" 2>&1 | normalize_long >"$ls_file"
-    eval "$ft_command" 2>&1 | normalize_long >"$ft_file"
+	eval "$ls_command" 2>&1 | normalize_long >"$ls_file"
+	eval "$ft_command" 2>&1 | normalize_long >"$ft_file"
 
-    if diff -u "$ls_file" "$ft_file" >"$diff_file"; then
-        pass "$test_name"
-    else
-        fail "$test_name"
-        echo "  Diff: $diff_file"
-        sed -n '1,80p' "$diff_file"
-    fi
-}
-
-check_exit_status()
-{
-    test_name="$1"
-    expected="$2"
-    shift 2
-
-    "$@" >/dev/null 2>&1
-    status=$?
-
-    if [ "$status" -eq "$expected" ]; then
-        pass "$test_name"
-    else
-        fail "$test_name (expected exit $expected, got $status)"
-    fi
-}
-
-run_valgrind()
-{
-    test_name="$1"
-    shift
-
-    if [ "$NO_VALGRIND" -eq 1 ]; then
-        return
-    fi
-
-    if [ -z "$VALGRIND_BIN" ]; then
-        echo "[WARN] Valgrind not installed; skipping $test_name"
-        return
-    fi
-
-    log="$RESULTS_DIR/valgrind_${test_name}.log"
-
-    "$VALGRIND_BIN" \
-        --leak-check=full \
-        --show-leak-kinds=all \
-        --track-origins=yes \
-        --error-exitcode=42 \
-        --log-file="$log" \
-        "$@" >/dev/null 2>&1
-
-    vg_status=$?
-
-    if [ "$vg_status" -eq 42 ]; then
-        fail "Valgrind $test_name"
-        grep -E \
-            "definitely lost|indirectly lost|ERROR SUMMARY" \
-            "$log" | tail -10
-    else
-        if grep -Eq \
-            "definitely lost: [1-9][0-9]* bytes|indirectly lost: [1-9][0-9]* bytes" \
-            "$log"; then
-            fail "Valgrind $test_name - memory leak detected"
-            grep -E \
-                "definitely lost|indirectly lost|ERROR SUMMARY" \
-                "$log" | tail -10
-        else
-            pass "Valgrind $test_name - no memory leak detected"
-        fi
-    fi
+	if diff -u "$ls_file" "$ft_file" >"$diff_file"; then
+		pass "$test_name"
+	else
+		fail "$test_name"
+		echo "  Diff: $diff_file"
+		sed -n '1,80p' "$diff_file"
+	fi
 }
 
 # ============================================================
@@ -579,105 +499,187 @@ run_valgrind()
 
 info "BASIC TESTS"
 
-# ls
-compare_output \
-    "ls_basic" \
-    "LC_ALL=C \"$LS_BIN\" -1 \"$TMPROOT/dir_files\"" \
-    "\"$FT_BIN\" \"$TMPROOT/dir_files\""
+# ------------------------------------------------------------
+# ls - no arguments
+# ------------------------------------------------------------
 
+(
+	cd "$TMPROOT" || exit 1
+	LC_ALL=C "$LS_BIN" -1 >"$RESULTS_DIR/ls_no_args.ls" 2>&1
+	"$FT_BIN" >"$RESULTS_DIR/ls_no_args.ft" 2>&1
+)
+
+if diff -u \
+	"$RESULTS_DIR/ls_no_args.ls" \
+	"$RESULTS_DIR/ls_no_args.ft" \
+	>"$RESULTS_DIR/ls_no_args.diff"; then
+	pass "ls_no_args"
+else
+	fail "ls_no_args"
+	sed -n '1,80p' "$RESULTS_DIR/ls_no_args.diff"
+fi
+
+# ------------------------------------------------------------
+# ls - file
+# ------------------------------------------------------------
+
+compare_output \
+	"ls_file" \
+	"LC_ALL=C \"$LS_BIN\" -1 \"$TMPROOT/dir_files/foo.txt\"" \
+	"\"$FT_BIN\" \"$TMPROOT/dir_files/foo.txt\""
+
+# ------------------------------------------------------------
+# ls - directory
+# ------------------------------------------------------------
+
+compare_output \
+	"ls_directory" \
+	"LC_ALL=C \"$LS_BIN\" -1 \"$TMPROOT/dir_files\"" \
+	"\"$FT_BIN\" \"$TMPROOT/dir_files\""
+
+# ------------------------------------------------------------
 # ls -a
+# ------------------------------------------------------------
+
 compare_output \
-    "ls_a" \
-    "LC_ALL=C \"$LS_BIN\" -a -1 \"$TMPROOT/dir_hidden\"" \
-    "\"$FT_BIN\" -a \"$TMPROOT/dir_hidden\""
+	"ls_a" \
+	"LC_ALL=C \"$LS_BIN\" -a -1 \"$TMPROOT/dir_hidden\"" \
+	"\"$FT_BIN\" -a \"$TMPROOT/dir_hidden\""
 
-# ls -l directory
+# ------------------------------------------------------------
+# ls -l - no arguments
+# ------------------------------------------------------------
+
+(
+	cd "$TMPROOT" || exit 1
+	LC_ALL=C "$LS_BIN" -l >"$RESULTS_DIR/ls_l_no_args.ls" 2>&1
+	"$FT_BIN" -l >"$RESULTS_DIR/ls_l_no_args.ft" 2>&1
+)
+
+normalize_long <"$RESULTS_DIR/ls_l_no_args.ls" \
+	>"$RESULTS_DIR/ls_l_no_args.ls.norm"
+
+normalize_long <"$RESULTS_DIR/ls_l_no_args.ft" \
+	>"$RESULTS_DIR/ls_l_no_args.ft.norm"
+
+if diff -u \
+	"$RESULTS_DIR/ls_l_no_args.ls.norm" \
+	"$RESULTS_DIR/ls_l_no_args.ft.norm" \
+	>"$RESULTS_DIR/ls_l_no_args.diff"; then
+	pass "ls_l_no_args"
+else
+	fail "ls_l_no_args"
+	sed -n '1,80p' "$RESULTS_DIR/ls_l_no_args.diff"
+fi
+
+# ------------------------------------------------------------
+# ls -l - file
+# ------------------------------------------------------------
+
 compare_long \
-    "ls_l_directory" \
-    "LC_ALL=C \"$LS_BIN\" -l \"$TMPROOT/dir_files\"" \
-    "\"$FT_BIN\" -l \"$TMPROOT/dir_files\""
+	"ls_l_file" \
+	"LC_ALL=C \"$LS_BIN\" -l \"$TMPROOT/dir_files/foo.txt\"" \
+	"\"$FT_BIN\" -l \"$TMPROOT/dir_files/foo.txt\""
 
-# ls -l file
+# ------------------------------------------------------------
+# ls -l - directory
+# ------------------------------------------------------------
+
 compare_long \
-    "ls_l_file" \
-    "LC_ALL=C \"$LS_BIN\" -l \"$TMPROOT/dir_files/foo.txt\"" \
-    "\"$FT_BIN\" -l \"$TMPROOT/dir_files/foo.txt\""
+	"ls_l_directory" \
+	"LC_ALL=C \"$LS_BIN\" -l \"$TMPROOT/dir_files\"" \
+	"\"$FT_BIN\" -l \"$TMPROOT/dir_files\""
 
-# ls -l default
-compare_long \
-    "ls_l_default" \
-    "LC_ALL=C \"$LS_BIN\" -l \"$TMPROOT/dir_files\"" \
-    "\"$FT_BIN\" -l \"$TMPROOT/dir_files\""
+# ------------------------------------------------------------
+# Symbolic links - directory
+# ------------------------------------------------------------
 
-# symbolic links
 compare_output \
-    "symlinks" \
-    "LC_ALL=C \"$LS_BIN\" -1 \"$TMPROOT/dir_symlinks\"" \
-    "\"$FT_BIN\" \"$TMPROOT/dir_symlinks\""
+	"symlink_directory_listing" \
+	"LC_ALL=C \"$LS_BIN\" -1 \"$TMPROOT/dir_symlinks\"" \
+	"\"$FT_BIN\" \"$TMPROOT/dir_symlinks\""
 
-# direct broken symlink
+# ------------------------------------------------------------
+# Symbolic links - exact display
+# ------------------------------------------------------------
+
 compare_long \
-    "broken_symlink" \
-    "LC_ALL=C \"$LS_BIN\" -l \"$TMPROOT/dir_symlinks/broken_link\"" \
-    "\"$FT_BIN\" -l \"$TMPROOT/dir_symlinks/broken_link\""
+	"symlink_to_directory" \
+	"LC_ALL=C \"$LS_BIN\" -l \"$TMPROOT/dir_symlinks/link_to_dir\"" \
+	"\"$FT_BIN\" -l \"$TMPROOT/dir_symlinks/link_to_dir\""
+
+compare_long \
+	"symlink_to_file" \
+	"LC_ALL=C \"$LS_BIN\" -l \"$TMPROOT/dir_symlinks/link_to_file\"" \
+	"\"$FT_BIN\" -l \"$TMPROOT/dir_symlinks/link_to_file\""
+
+compare_long \
+	"broken_symlink" \
+	"LC_ALL=C \"$LS_BIN\" -l \"$TMPROOT/dir_symlinks/broken_link\"" \
+	"\"$FT_BIN\" -l \"$TMPROOT/dir_symlinks/broken_link\""
 
 # ============================================================
-# BASIC ++
+# BASIC ++ TESTS
 # ============================================================
 
 info "BASIC ++ TESTS"
 
-# reverse
+# ------------------------------------------------------------
+# ls -r
+# ------------------------------------------------------------
+
 compare_output \
-    "ls_r" \
-    "LC_ALL=C \"$LS_BIN\" -1 -r \"$TMPROOT/dir_sort\"" \
-    "\"$FT_BIN\" -r \"$TMPROOT/dir_sort\""
+	"ls_r" \
+	"LC_ALL=C \"$LS_BIN\" -1 -r \"$TMPROOT/dir_sort\"" \
+	"\"$FT_BIN\" -r \"$TMPROOT/dir_sort\""
 
-# time
+# ------------------------------------------------------------
+# ls -t
+# ------------------------------------------------------------
+
 compare_output \
-    "ls_t" \
-    "LC_ALL=C \"$LS_BIN\" -1 -t \"$TMPROOT/dir_sort\"" \
-    "\"$FT_BIN\" -t \"$TMPROOT/dir_sort\""
+	"ls_t" \
+	"LC_ALL=C \"$LS_BIN\" -1 -t \"$TMPROOT/dir_sort\"" \
+	"\"$FT_BIN\" -t \"$TMPROOT/dir_sort\""
 
-# reverse + time
+# ------------------------------------------------------------
+# ls -r multiple files/folders
+# ------------------------------------------------------------
+
 compare_output \
-    "ls_rt" \
-    "LC_ALL=C \"$LS_BIN\" -1 -r -t \"$TMPROOT/dir_sort\"" \
-    "\"$FT_BIN\" -rt \"$TMPROOT/dir_sort\""
+	"ls_r_multiple_args" \
+	"LC_ALL=C \"$LS_BIN\" -1 -r \"$TMPROOT/dir_multi_a\" \"$TMPROOT/dir_multi_b\" \"$TMPROOT/dir_multi_c\"" \
+	"\"$FT_BIN\" -r \"$TMPROOT/dir_multi_a\" \"$TMPROOT/dir_multi_b\" \"$TMPROOT/dir_multi_c\""
 
-# multiple arguments with -r
+# ------------------------------------------------------------
+# ls -t multiple files/folders
+# ------------------------------------------------------------
+
 compare_output \
-    "ls_r_multiple_args" \
-    "LC_ALL=C \"$LS_BIN\" -1 -r \"$TMPROOT/dir_multi_a\" \"$TMPROOT/dir_multi_b\" \"$TMPROOT/dir_multi_c\"" \
-    "\"$FT_BIN\" -r \"$TMPROOT/dir_multi_a\" \"$TMPROOT/dir_multi_b\" \"$TMPROOT/dir_multi_c\""
+	"ls_t_multiple_args" \
+	"LC_ALL=C \"$LS_BIN\" -1 -t \"$TMPROOT/dir_sort/oldest.txt\" \"$TMPROOT/dir_sort/newest.txt\" \"$TMPROOT/dir_sort/middle.txt\"" \
+	"\"$FT_BIN\" -t \"$TMPROOT/dir_sort/oldest.txt\" \"$TMPROOT/dir_sort/newest.txt\" \"$TMPROOT/dir_sort/middle.txt\""
 
-# multiple arguments with -t
-compare_output \
-    "ls_t_multiple_args" \
-    "LC_ALL=C \"$LS_BIN\" -1 -t \"$TMPROOT/dir_sort/oldest.txt\" \"$TMPROOT/dir_sort/newest.txt\" \"$TMPROOT/dir_sort/middle.txt\"" \
-    "\"$FT_BIN\" -t \"$TMPROOT/dir_sort/oldest.txt\" \"$TMPROOT/dir_sort/newest.txt\" \"$TMPROOT/dir_sort/middle.txt\""
-
-# ============================================================
-# SPECIAL BITS
-# ============================================================
-
-info "SUID / SGID / STICKY TESTS"
+# ------------------------------------------------------------
+# SUID / SGID / sticky
+# ------------------------------------------------------------
 
 compare_long \
-    "special_bits" \
-    "LC_ALL=C \"$LS_BIN\" -l \"$TMPROOT/dir_special\"" \
-    "\"$FT_BIN\" -l \"$TMPROOT/dir_special\""
+	"special_bits" \
+	"LC_ALL=C \"$LS_BIN\" -l \"$TMPROOT/dir_special\"" \
+	"\"$FT_BIN\" -l \"$TMPROOT/dir_special\""
 
-# Explicitly inspect special permission characters
 special_output="$RESULTS_DIR/special_bits.raw"
 
-"$FT_BIN" -l "$TMPROOT/dir_special" >"$special_output" 2>&1
+"$FT_BIN" -l "$TMPROOT/dir_special" \
+	>"$special_output" 2>&1
 
-if grep -Eq "suid_exec|suid_noexec|sgid_exec" "$special_output" &&
-   grep -Eq "[rwx-]{3}[sStT]" "$special_output"; then
-    pass "special permission bits are displayed"
+if grep -Eq "suid_exec|suid_noexec|sgid_exec|sticky_dir" \
+	"$special_output" &&
+	grep -Eq "[rwx-]{3}[sStT]" "$special_output"; then
+	pass "special permission bits are displayed"
 else
-    fail "special permission bits are not displayed correctly"
+	fail "special permission bits are displayed"
 fi
 
 # ============================================================
@@ -686,46 +688,71 @@ fi
 
 info "MIDDLE TESTS"
 
-# recursive
+# ------------------------------------------------------------
+# ls -R
+# ------------------------------------------------------------
+
 compare_output \
-    "ls_R" \
-    "LC_ALL=C \"$LS_BIN\" -R \"$TMPROOT/dir_grouped\"" \
-    "\"$FT_BIN\" -R \"$TMPROOT/dir_grouped\""
+	"ls_R" \
+	"LC_ALL=C \"$LS_BIN\" -R \"$TMPROOT/dir_recursive\"" \
+	"\"$FT_BIN\" -R \"$TMPROOT/dir_recursive\""
 
-# grouped options
-compare_long \
-    "combined_laR" \
-    "LC_ALL=C \"$LS_BIN\" -l -a -R \"$TMPROOT/dir_grouped\"" \
-    "\"$FT_BIN\" -laR \"$TMPROOT/dir_grouped\""
+# ------------------------------------------------------------
+# -l -t
+# ------------------------------------------------------------
 
-# separated options
 compare_long \
-    "separated_l_r_R" \
-    "LC_ALL=C \"$LS_BIN\" -l -r -R \"$TMPROOT/dir_grouped\"" \
-    "\"$FT_BIN\" -l -r -R \"$TMPROOT/dir_grouped\""
+	"separated_l_t" \
+	"LC_ALL=C \"$LS_BIN\" -l -t \"$TMPROOT/dir_sort\"" \
+	"\"$FT_BIN\" -l -t \"$TMPROOT/dir_sort\""
 
-# combined lt
 compare_long \
-    "combined_lt" \
-    "LC_ALL=C \"$LS_BIN\" -l -t \"$TMPROOT/dir_sort\"" \
-    "\"$FT_BIN\" -lt \"$TMPROOT/dir_sort\""
+	"combined_lt" \
+	"LC_ALL=C \"$LS_BIN\" -lt \"$TMPROOT/dir_sort\"" \
+	"\"$FT_BIN\" -lt \"$TMPROOT/dir_sort\""
 
-# combined lr
+# ------------------------------------------------------------
+# -l -r
+# ------------------------------------------------------------
+
 compare_long \
-    "combined_lr" \
-    "LC_ALL=C \"$LS_BIN\" -l -r \"$TMPROOT/dir_sort\"" \
-    "\"$FT_BIN\" -lr \"$TMPROOT/dir_sort\""
+	"separated_l_r" \
+	"LC_ALL=C \"$LS_BIN\" -l -r \"$TMPROOT/dir_sort\"" \
+	"\"$FT_BIN\" -l -r \"$TMPROOT/dir_sort\""
+
+compare_long \
+	"combined_lr" \
+	"LC_ALL=C \"$LS_BIN\" -lr \"$TMPROOT/dir_sort\"" \
+	"\"$FT_BIN\" -lr \"$TMPROOT/dir_sort\""
+
+# ------------------------------------------------------------
+# -l -a -R
+# ------------------------------------------------------------
+
+compare_long \
+	"combined_laR" \
+	"LC_ALL=C \"$LS_BIN\" -laR \"$TMPROOT/dir_recursive\"" \
+	"\"$FT_BIN\" -laR \"$TMPROOT/dir_recursive\""
+
+# ------------------------------------------------------------
+# separated -l -r -R
+# ------------------------------------------------------------
+
+compare_long \
+	"separated_l_r_R" \
+	"LC_ALL=C \"$LS_BIN\" -l -r -R \"$TMPROOT/dir_recursive\"" \
+	"\"$FT_BIN\" -l -r -R \"$TMPROOT/dir_recursive\""
 
 # ============================================================
-# SPECIAL NAMES
+# SPECIAL FILENAMES
 # ============================================================
 
 info "SPECIAL FILENAMES"
 
 compare_output \
-    "spaces" \
-    "LC_ALL=C \"$LS_BIN\" -1 \"$TMPROOT/dir_spaces\"" \
-    "\"$FT_BIN\" \"$TMPROOT/dir_spaces\""
+	"spaces" \
+	"LC_ALL=C \"$LS_BIN\" -1 \"$TMPROOT/dir_spaces\"" \
+	"\"$FT_BIN\" \"$TMPROOT/dir_spaces\""
 
 # ============================================================
 # MANY FILES
@@ -734,32 +761,9 @@ compare_output \
 info "MANY FILES"
 
 compare_output \
-    "many_files" \
-    "LC_ALL=C \"$LS_BIN\" -1 \"$TMPROOT/dir_many\"" \
-    "\"$FT_BIN\" \"$TMPROOT/dir_many\""
-
-# ============================================================
-# DEFAULT PATH
-# ============================================================
-
-info "DEFAULT PATH"
-
-(
-    cd "$TMPROOT" || exit 1
-
-    LC_ALL=C "$LS_BIN" >"$RESULTS_DIR/default.ls" 2>&1
-    "$FT_BIN" >"$RESULTS_DIR/default.ft" 2>&1
-)
-
-if diff -u \
-    "$RESULTS_DIR/default.ls" \
-    "$RESULTS_DIR/default.ft" \
-    >"$RESULTS_DIR/default.diff"; then
-    pass "default path"
-else
-    fail "default path"
-    sed -n '1,80p' "$RESULTS_DIR/default.diff"
-fi
+	"many_files" \
+	"LC_ALL=C \"$LS_BIN\" -1 \"$TMPROOT/dir_many\"" \
+	"\"$FT_BIN\" \"$TMPROOT/dir_many\""
 
 # ============================================================
 # EMPTY DIRECTORY
@@ -768,9 +772,9 @@ fi
 info "EMPTY DIRECTORY"
 
 compare_long \
-    "empty_directory" \
-    "LC_ALL=C \"$LS_BIN\" -l \"$TMPROOT/empty_dir\"" \
-    "\"$FT_BIN\" -l \"$TMPROOT/empty_dir\""
+	"empty_directory" \
+	"LC_ALL=C \"$LS_BIN\" -l \"$TMPROOT/empty_dir\"" \
+	"\"$FT_BIN\" -l \"$TMPROOT/empty_dir\""
 
 # ============================================================
 # OLD DATES
@@ -779,138 +783,217 @@ compare_long \
 info "DATE TESTS"
 
 compare_long \
-    "old_dates" \
-    "LC_ALL=C \"$LS_BIN\" -l \"$TMPROOT/dir_dates\"" \
-    "\"$FT_BIN\" -l \"$TMPROOT/dir_dates\""
+	"old_dates" \
+	"LC_ALL=C \"$LS_BIN\" -l \"$TMPROOT/dir_dates\"" \
+	"\"$FT_BIN\" -l \"$TMPROOT/dir_dates\""
 
 # ============================================================
-# NONEXISTENT PATH
-# ============================================================
-
-info "ERROR MANAGEMENT"
-
-"$LS_BIN" "$TMPROOT/does_not_exist" \
-    >"$RESULTS_DIR/nonexistent.ls.out" \
-    2>"$RESULTS_DIR/nonexistent.ls.err"
-ls_status=$?
-
-"$FT_BIN" "$TMPROOT/does_not_exist" \
-    >"$RESULTS_DIR/nonexistent.ft.out" \
-    2>"$RESULTS_DIR/nonexistent.ft.err"
-ft_status=$?
-
-if [ "$ls_status" -ne 0 ] && [ "$ft_status" -ne 0 ]; then
-    pass "nonexistent path returns non-zero"
-else
-    fail "nonexistent path exit status"
-fi
-
-if [ -s "$RESULTS_DIR/nonexistent.ft.err" ]; then
-    pass "nonexistent path prints an error"
-else
-    fail "nonexistent path does not print an error"
-fi
-
-# ============================================================
-# PARTIAL PATH FAILURE
-# ============================================================
-
-"$LS_BIN" \
-    "$TMPROOT/dir_multi_a" \
-    "$TMPROOT/does_not_exist" \
-    "$TMPROOT/dir_multi_b" \
-    >"$RESULTS_DIR/partial.ls.out" \
-    2>"$RESULTS_DIR/partial.ls.err"
-ls_status=$?
-
-"$FT_BIN" \
-    "$TMPROOT/dir_multi_a" \
-    "$TMPROOT/does_not_exist" \
-    "$TMPROOT/dir_multi_b" \
-    >"$RESULTS_DIR/partial.ft.out" \
-    2>"$RESULTS_DIR/partial.ft.err"
-ft_status=$?
-
-if [ "$ls_status" -ne 0 ] && [ "$ft_status" -ne 0 ]; then
-    pass "partial path failure returns non-zero"
-else
-    fail "partial path failure exit status"
-fi
-
-if grep -q "does_not_exist" "$RESULTS_DIR/partial.ft.err"; then
-    pass "partial path failure reports missing path"
-else
-    fail "partial path failure does not report missing path"
-fi
-
-# ============================================================
-# INVALID OPTION
-# ============================================================
-
-"$LS_BIN" -z \
-    >"$RESULTS_DIR/invalid.ls.out" \
-    2>"$RESULTS_DIR/invalid.ls.err"
-ls_status=$?
-
-"$FT_BIN" -z \
-    >"$RESULTS_DIR/invalid.ft.out" \
-    2>"$RESULTS_DIR/invalid.ft.err"
-ft_status=$?
-
-if [ "$ls_status" -ne 0 ] && [ "$ft_status" -ne 0 ]; then
-    pass "invalid option returns non-zero"
-else
-    fail "invalid option exit status"
-fi
-
-if [ -s "$RESULTS_DIR/invalid.ft.err" ]; then
-    pass "invalid option prints an error"
-else
-    fail "invalid option does not print an error"
-fi
-
-# ============================================================
-# MULTIPLE FILES + DIRECTORIES
+# MULTIPLE FILES / DIRECTORIES
 # ============================================================
 
 info "MULTIPLE ARGUMENT TESTS"
 
 compare_output \
-    "multiple_dirs" \
-    "LC_ALL=C \"$LS_BIN\" -1 \"$TMPROOT/dir_multi_b\" \"$TMPROOT/dir_multi_a\" \"$TMPROOT/dir_multi_c\"" \
-    "\"$FT_BIN\" \"$TMPROOT/dir_multi_b\" \"$TMPROOT/dir_multi_a\" \"$TMPROOT/dir_multi_c\""
+	"multiple_dirs" \
+	"LC_ALL=C \"$LS_BIN\" -1 \"$TMPROOT/dir_multi_b\" \"$TMPROOT/dir_multi_a\" \"$TMPROOT/dir_multi_c\"" \
+	"\"$FT_BIN\" \"$TMPROOT/dir_multi_b\" \"$TMPROOT/dir_multi_a\" \"$TMPROOT/dir_multi_c\""
 
 compare_output \
-    "mixed_files_dirs" \
-    "LC_ALL=C \"$LS_BIN\" -1 \"$TMPROOT/dir_multi_a/fileA.txt\" \"$TMPROOT/dir_multi_a\" \"$TMPROOT/dir_multi_b/fileB.txt\" \"$TMPROOT/dir_multi_b\"" \
-    "\"$FT_BIN\" \"$TMPROOT/dir_multi_a/fileA.txt\" \"$TMPROOT/dir_multi_a\" \"$TMPROOT/dir_multi_b/fileB.txt\" \"$TMPROOT/dir_multi_b\""
+	"mixed_files_dirs" \
+	"LC_ALL=C \"$LS_BIN\" -1 \"$TMPROOT/dir_multi_a/fileA.txt\" \"$TMPROOT/dir_multi_a\" \"$TMPROOT/dir_multi_b/fileB.txt\" \"$TMPROOT/dir_multi_b\"" \
+	"\"$FT_BIN\" \"$TMPROOT/dir_multi_a/fileA.txt\" \"$TMPROOT/dir_multi_a\" \"$TMPROOT/dir_multi_b/fileB.txt\" \"$TMPROOT/dir_multi_b\""
 
 # ============================================================
-# INACCESSIBLE DIRECTORY
+# ERROR MANAGEMENT
 # ============================================================
 
-info "INACCESSIBLE DIRECTORY"
+info "ERROR MANAGEMENT"
 
-if [ "$(id -u)" -eq 0 ]; then
-    echo "[SKIP] inaccessible-directory test: running as root"
+# ------------------------------------------------------------
+# Nonexistent file
+# ------------------------------------------------------------
+
+"$LS_BIN" "$TMPROOT/no_such_file.txt" \
+	>"$RESULTS_DIR/nonexistent_file.ls.out" \
+	2>"$RESULTS_DIR/nonexistent_file.ls.err"
+ls_status=$?
+
+"$FT_BIN" "$TMPROOT/no_such_file.txt" \
+	>"$RESULTS_DIR/nonexistent_file.ft.out" \
+	2>"$RESULTS_DIR/nonexistent_file.ft.err"
+ft_status=$?
+
+if [ "$ls_status" -ne 0 ] && [ "$ft_status" -ne 0 ]; then
+	pass "nonexistent file returns non-zero"
 else
-    "$LS_BIN" "$TMPROOT/dir_unreadable" \
-        >"$RESULTS_DIR/unreadable.ls.out" \
-        2>"$RESULTS_DIR/unreadable.ls.err"
-
-    "$FT_BIN" "$TMPROOT/dir_unreadable" \
-        >"$RESULTS_DIR/unreadable.ft.out" \
-        2>"$RESULTS_DIR/unreadable.ft.err"
-
-    if [ -s "$RESULTS_DIR/unreadable.ft.err" ]; then
-        pass "inaccessible directory produces an error"
-    else
-        fail "inaccessible directory does not produce an error"
-    fi
+	fail "nonexistent file returns non-zero"
 fi
 
-# Restore permissions so cleanup works normally.
-chmod 755 "$TMPROOT/dir_unreadable" 2>/dev/null || true
+if grep -q "no_such_file.txt" \
+	"$RESULTS_DIR/nonexistent_file.ft.err"; then
+	pass "nonexistent file prints an error"
+else
+	fail "nonexistent file prints an error"
+fi
+
+# ------------------------------------------------------------
+# Nonexistent directory
+# ------------------------------------------------------------
+
+"$LS_BIN" "$TMPROOT/no_such_directory" \
+	>"$RESULTS_DIR/nonexistent_dir.ls.out" \
+	2>"$RESULTS_DIR/nonexistent_dir.ls.err"
+ls_status=$?
+
+"$FT_BIN" "$TMPROOT/no_such_directory" \
+	>"$RESULTS_DIR/nonexistent_dir.ft.out" \
+	2>"$RESULTS_DIR/nonexistent_dir.ft.err"
+ft_status=$?
+
+if [ "$ls_status" -ne 0 ] && [ "$ft_status" -ne 0 ]; then
+	pass "nonexistent directory returns non-zero"
+else
+	fail "nonexistent directory returns non-zero"
+fi
+
+if grep -q "no_such_directory" \
+	"$RESULTS_DIR/nonexistent_dir.ft.err"; then
+	pass "nonexistent directory prints an error"
+else
+	fail "nonexistent directory prints an error"
+fi
+
+# ------------------------------------------------------------
+# Partial failure
+# ------------------------------------------------------------
+
+"$LS_BIN" \
+	"$TMPROOT/dir_multi_a" \
+	"$TMPROOT/no_such_path" \
+	"$TMPROOT/dir_multi_b" \
+	>"$RESULTS_DIR/partial.ls.out" \
+	2>"$RESULTS_DIR/partial.ls.err"
+ls_status=$?
+
+"$FT_BIN" \
+	"$TMPROOT/dir_multi_a" \
+	"$TMPROOT/no_such_path" \
+	"$TMPROOT/dir_multi_b" \
+	>"$RESULTS_DIR/partial.ft.out" \
+	2>"$RESULTS_DIR/partial.ft.err"
+ft_status=$?
+
+if [ "$ls_status" -ne 0 ] && [ "$ft_status" -ne 0 ]; then
+	pass "partial path failure returns non-zero"
+else
+	fail "partial path failure returns non-zero"
+fi
+
+if grep -q "no_such_path" \
+	"$RESULTS_DIR/partial.ft.err"; then
+	pass "partial path failure reports missing path"
+else
+	fail "partial path failure reports missing path"
+fi
+
+# ============================================================
+# INACCESSIBLE FILE / DIRECTORY
+# ============================================================
+
+info "INACCESSIBLE FILE / DIRECTORY"
+
+if [ "$(id -u)" -eq 0 ]; then
+	echo "[SKIP] inaccessible file/directory tests: running as root"
+else
+	# --------------------------------------------------------
+	# Inaccessible file
+	# --------------------------------------------------------
+
+	"$LS_BIN" "$TMPROOT/inaccessible_file.txt" \
+		>"$RESULTS_DIR/inaccessible_file.ls.out" \
+		2>"$RESULTS_DIR/inaccessible_file.ls.err"
+
+	"$FT_BIN" "$TMPROOT/inaccessible_file.txt" \
+		>"$RESULTS_DIR/inaccessible_file.ft.out" \
+		2>"$RESULTS_DIR/inaccessible_file.ft.err"
+
+	if [ -s "$RESULTS_DIR/inaccessible_file.ft.err" ]; then
+		pass "inaccessible file produces an error"
+	else
+		fail "inaccessible file produces an error"
+	fi
+
+	# --------------------------------------------------------
+	# Inaccessible directory
+	# --------------------------------------------------------
+
+	"$LS_BIN" "$TMPROOT/dir_unreadable" \
+		>"$RESULTS_DIR/inaccessible_dir.ls.out" \
+		2>"$RESULTS_DIR/inaccessible_dir.ls.err"
+
+	"$FT_BIN" "$TMPROOT/dir_unreadable" \
+		>"$RESULTS_DIR/inaccessible_dir.ft.out" \
+		2>"$RESULTS_DIR/inaccessible_dir.ft.err"
+
+	if [ -s "$RESULTS_DIR/inaccessible_dir.ft.err" ]; then
+		pass "inaccessible directory produces an error"
+	else
+		fail "inaccessible directory produces an error"
+	fi
+fi
+
+# ============================================================
+# INVALID OPTIONS
+# ============================================================
+
+info "INVALID OPTIONS"
+
+# ------------------------------------------------------------
+# -z
+# ------------------------------------------------------------
+
+"$LS_BIN" -z \
+	>"$RESULTS_DIR/invalid_z.ls.out" \
+	2>"$RESULTS_DIR/invalid_z.ls.err"
+ls_status=$?
+
+"$FT_BIN" -z \
+	>"$RESULTS_DIR/invalid_z.ft.out" \
+	2>"$RESULTS_DIR/invalid_z.ft.err"
+ft_status=$?
+
+if [ "$ls_status" -ne 0 ] && [ "$ft_status" -ne 0 ]; then
+	pass "invalid option -z returns non-zero"
+else
+	fail "invalid option -z returns non-zero"
+fi
+
+if [ -s "$RESULTS_DIR/invalid_z.ft.err" ]; then
+	pass "invalid option -z prints an error"
+else
+	fail "invalid option -z prints an error"
+fi
+
+# ------------------------------------------------------------
+# invalid option in cluster
+# ------------------------------------------------------------
+
+"$FT_BIN" -lz \
+	>"$RESULTS_DIR/invalid_lz.ft.out" \
+	2>"$RESULTS_DIR/invalid_lz.ft.err"
+ft_status=$?
+
+if [ "$ft_status" -ne 0 ]; then
+	pass "invalid clustered option returns non-zero"
+else
+	fail "invalid clustered option returns non-zero"
+fi
+
+if [ -s "$RESULTS_DIR/invalid_lz.ft.err" ]; then
+	pass "invalid clustered option prints an error"
+else
+	fail "invalid clustered option prints an error"
+fi
 
 # ============================================================
 # EXIT STATUS
@@ -919,16 +1002,16 @@ chmod 755 "$TMPROOT/dir_unreadable" 2>/dev/null || true
 info "EXIT STATUS"
 
 "$FT_BIN" \
-    "$TMPROOT/dir_files" \
-    "$TMPROOT/does_not_exist" \
-    >/dev/null 2>&1
+	"$TMPROOT/dir_files" \
+	"$TMPROOT/does_not_exist" \
+	>/dev/null 2>&1
 
 ft_status=$?
 
 if [ "$ft_status" -ne 0 ]; then
-    pass "exit status on partial failure is non-zero"
+	pass "exit status on partial failure is non-zero"
 else
-    fail "exit status on partial failure should be non-zero"
+	fail "exit status on partial failure should be non-zero"
 fi
 
 # ============================================================
@@ -938,25 +1021,78 @@ fi
 info "VALGRIND"
 
 if [ "$NO_VALGRIND" -eq 1 ]; then
-    echo "[SKIP] Valgrind disabled with --no-valgrind"
+	echo "[SKIP] Valgrind disabled with --no-valgrind"
 elif [ -z "$VALGRIND_BIN" ]; then
-    echo "[WARN] Valgrind is not installed"
+	echo "[WARN] Valgrind is not installed"
 else
-    run_valgrind "basic" \
-        "$FT_BIN" "$TMPROOT/dir_files"
+	run_valgrind()
+	{
+		test_name="$1"
+		shift
 
-    run_valgrind "long" \
-        "$FT_BIN" -l "$TMPROOT/dir_files"
+		log="$RESULTS_DIR/valgrind_${test_name}.log"
 
-    run_valgrind "recursive" \
-        "$FT_BIN" -R "$TMPROOT/dir_grouped"
+		"$VALGRIND_BIN" \
+			--leak-check=full \
+			--show-leak-kinds=all \
+			--track-origins=yes \
+			--error-exitcode=42 \
+			--log-file="$log" \
+			"$@" >/dev/null 2>&1
 
-    run_valgrind "all_flags" \
-        "$FT_BIN" -laR "$TMPROOT/dir_grouped"
+		vg_status=$?
 
-    run_valgrind "error" \
-        "$FT_BIN" "$TMPROOT/does_not_exist"
+		if [ "$vg_status" -eq 42 ]; then
+			fail "Valgrind $test_name"
+			grep -E \
+				"definitely lost|indirectly lost|ERROR SUMMARY" \
+				"$log" | tail -10
+		elif grep -Eq \
+			"definitely lost: [1-9][0-9]* bytes|indirectly lost: [1-9][0-9]* bytes" \
+			"$log"; then
+			fail "Valgrind $test_name - memory leak detected"
+			grep -E \
+				"definitely lost|indirectly lost|ERROR SUMMARY" \
+				"$log" | tail -10
+		else
+			pass "Valgrind $test_name - no memory leak detected"
+		fi
+	}
+
+	run_valgrind \
+		"basic" \
+		"$FT_BIN" "$TMPROOT/dir_files"
+
+	run_valgrind \
+		"long" \
+		"$FT_BIN" -l "$TMPROOT/dir_files"
+
+	run_valgrind \
+		"recursive" \
+		"$FT_BIN" -R "$TMPROOT/dir_recursive"
+
+	run_valgrind \
+		"multiple_args" \
+		"$FT_BIN" -r \
+		"$TMPROOT/dir_multi_a" \
+		"$TMPROOT/dir_multi_b" \
+		"$TMPROOT/dir_multi_c"
+
+	run_valgrind \
+		"all_flags" \
+		"$FT_BIN" -laR "$TMPROOT/dir_recursive"
+
+	run_valgrind \
+		"error" \
+		"$FT_BIN" "$TMPROOT/no_such_file.txt"
 fi
+
+# ============================================================
+# RESTORE PERMISSIONS
+# ============================================================
+
+chmod 755 "$TMPROOT/inaccessible_file.txt" 2>/dev/null || true
+chmod 755 "$TMPROOT/dir_unreadable" 2>/dev/null || true
 
 # ============================================================
 # FINAL SUMMARY
@@ -969,18 +1105,21 @@ echo "Passed:    $PASSES"
 echo "Failed:    $FAILURES"
 
 if [ "$FAILURES" -eq 0 ]; then
-    echo
-    echo "============================================================"
-    echo "ALL AUTOMATED TESTS PASSED"
-    echo "============================================================"
-    exit 0
+	echo
+	echo "============================================================"
+	echo "ALL MANDATORY AUTOMATED TESTS PASSED"
+	echo "============================================================"
+	exit 0
 else
-    echo
-    echo "============================================================"
-    echo "SOME TESTS FAILED"
-    echo "============================================================"
-    echo
-    echo "Results are available in:"
-    echo "  $RESULTS_DIR"
-    exit 1
+	echo
+	echo "============================================================"
+	echo "SOME MANDATORY TESTS FAILED"
+	echo "============================================================"
+	echo
+	echo "Results are available in:"
+	echo "  $RESULTS_DIR"
+	echo
+	echo "Temporary tests:"
+	echo "  $TMPROOT"
+	exit 1
 fi

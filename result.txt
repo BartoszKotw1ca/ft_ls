@@ -1,0 +1,3985 @@
+===== FILE TREE =====
+./Makefile
+./README.md
+./author
+./ft_ls
+./graph.md
+./includes/ft_ls.h
+./mylibft/Makefile
+./mylibft/ft_printf/Makefile
+./mylibft/ft_printf/ft_percentcheck.c
+./mylibft/ft_printf/ft_percentcheck.o
+./mylibft/ft_printf/ft_printf.c
+./mylibft/ft_printf/ft_printf.h
+./mylibft/ft_printf/ft_printf.o
+./mylibft/ft_printf/ft_putchar.c
+./mylibft/ft_printf/ft_putchar.o
+./mylibft/ft_printf/ft_puthex.c
+./mylibft/ft_printf/ft_puthex.o
+./mylibft/ft_printf/ft_puthexup.c
+./mylibft/ft_printf/ft_puthexup.o
+./mylibft/ft_printf/ft_putnumber.c
+./mylibft/ft_printf/ft_putnumber.o
+./mylibft/ft_printf/ft_putstr.c
+./mylibft/ft_printf/ft_putstr.o
+./mylibft/ft_printf/ft_putunbr.c
+./mylibft/ft_printf/ft_putunbr.o
+./mylibft/ft_printf/ft_void_pointer.c
+./mylibft/ft_printf/ft_void_pointer.o
+./mylibft/ft_printf/libftprintf.a
+./mylibft/ft_printf/main/main.c
+./mylibft/ft_printf/subject/en.subject.pdf
+./mylibft/get_next_line/Makefile
+./mylibft/get_next_line/Subject/en.subject.pdf
+./mylibft/get_next_line/description/description.txt
+./mylibft/get_next_line/get_next_line.a
+./mylibft/get_next_line/get_next_line.c
+./mylibft/get_next_line/get_next_line.h
+./mylibft/get_next_line/get_next_line.o
+./mylibft/get_next_line/get_next_line_utils.c
+./mylibft/get_next_line/get_next_line_utils.o
+./mylibft/get_next_line/main/main.c
+./mylibft/get_next_line/txtfiles/1-brouette.txt
+./mylibft/get_next_line/txtfiles/example_file.txt
+./mylibft/libft/.vscode/settings.json
+./mylibft/libft/Makefile
+./mylibft/libft/ft_atoi.c
+./mylibft/libft/ft_atoi.o
+./mylibft/libft/ft_bzero.c
+./mylibft/libft/ft_bzero.o
+./mylibft/libft/ft_calloc.c
+./mylibft/libft/ft_calloc.o
+./mylibft/libft/ft_isalnum.c
+./mylibft/libft/ft_isalnum.o
+./mylibft/libft/ft_isalpha.c
+./mylibft/libft/ft_isalpha.o
+./mylibft/libft/ft_isascii.c
+./mylibft/libft/ft_isascii.o
+./mylibft/libft/ft_isdigit.c
+./mylibft/libft/ft_isdigit.o
+./mylibft/libft/ft_isprint.c
+./mylibft/libft/ft_isprint.o
+./mylibft/libft/ft_itoa.c
+./mylibft/libft/ft_itoa.o
+./mylibft/libft/ft_lstadd_back.c
+./mylibft/libft/ft_lstadd_back.o
+./mylibft/libft/ft_lstadd_front.c
+./mylibft/libft/ft_lstadd_front.o
+./mylibft/libft/ft_lstclear.c
+./mylibft/libft/ft_lstclear.o
+./mylibft/libft/ft_lstdelone.c
+./mylibft/libft/ft_lstdelone.o
+./mylibft/libft/ft_lstiter.c
+./mylibft/libft/ft_lstiter.o
+./mylibft/libft/ft_lstlast.c
+./mylibft/libft/ft_lstlast.o
+./mylibft/libft/ft_lstmap.c
+./mylibft/libft/ft_lstmap.o
+./mylibft/libft/ft_lstnew.c
+./mylibft/libft/ft_lstnew.o
+./mylibft/libft/ft_lstsize.c
+./mylibft/libft/ft_lstsize.o
+./mylibft/libft/ft_memchr.c
+./mylibft/libft/ft_memchr.o
+./mylibft/libft/ft_memcmp.c
+./mylibft/libft/ft_memcmp.o
+./mylibft/libft/ft_memcpy.c
+./mylibft/libft/ft_memcpy.o
+./mylibft/libft/ft_memmove.c
+./mylibft/libft/ft_memmove.o
+./mylibft/libft/ft_memset.c
+./mylibft/libft/ft_memset.o
+./mylibft/libft/ft_putchar_fd.c
+./mylibft/libft/ft_putchar_fd.o
+./mylibft/libft/ft_putendl_fd.c
+./mylibft/libft/ft_putendl_fd.o
+./mylibft/libft/ft_putnbr_fd.c
+./mylibft/libft/ft_putnbr_fd.o
+./mylibft/libft/ft_putstr_fd.c
+./mylibft/libft/ft_putstr_fd.o
+./mylibft/libft/ft_split.c
+./mylibft/libft/ft_split.o
+./mylibft/libft/ft_strchr.c
+./mylibft/libft/ft_strchr.o
+./mylibft/libft/ft_strdup.c
+./mylibft/libft/ft_strdup.o
+./mylibft/libft/ft_striteri.c
+./mylibft/libft/ft_striteri.o
+./mylibft/libft/ft_strjoin.c
+./mylibft/libft/ft_strjoin.o
+./mylibft/libft/ft_strlcat.c
+./mylibft/libft/ft_strlcat.o
+./mylibft/libft/ft_strlcpy.c
+./mylibft/libft/ft_strlcpy.o
+./mylibft/libft/ft_strlen.c
+./mylibft/libft/ft_strlen.o
+./mylibft/libft/ft_strmapi.c
+./mylibft/libft/ft_strmapi.o
+./mylibft/libft/ft_strncmp.c
+./mylibft/libft/ft_strncmp.o
+./mylibft/libft/ft_strnstr.c
+./mylibft/libft/ft_strnstr.o
+./mylibft/libft/ft_strrchr.c
+./mylibft/libft/ft_strrchr.o
+./mylibft/libft/ft_strtrim.c
+./mylibft/libft/ft_strtrim.o
+./mylibft/libft/ft_substr.c
+./mylibft/libft/ft_substr.o
+./mylibft/libft/ft_tolower.c
+./mylibft/libft/ft_tolower.o
+./mylibft/libft/ft_toupper.c
+./mylibft/libft/ft_toupper.o
+./mylibft/libft/libft.a
+./mylibft/libft/libft.h
+./mylibft/libft/subject/en.subject.pdf
+./mylibft/libft/tests/tester.c
+./mylibft/mylibft.a
+./mylibft/mylibft.h
+./raport.md
+./result.txt
+./srcs/error.c
+./srcs/list_dir.c
+./srcs/list_dir_utils.c
+./srcs/main.c
+./srcs/main_utils.c
+./srcs/parse_args.c
+./srcs/permissions_utils.c
+./srcs/print_long.c
+./srcs/print_short.c
+./srcs/recursive.c
+./srcs/sort.c
+./srcs/stat_utils.c
+./srcs/utils.c
+./test.sh
+./test_check.sh
+./test_parser.sh
+./tests/.keep
+./tests/run_tests.sh
+===== ALL PROJECT TEXT =====
+
+
+============================================================
+FILE: includes/ft_ls.h
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                          :::      :::::::: */
+/*   ft_ls.h                                              :+:      :+:    :+: */
+/*                                                        +:+ +:+         +:+ */
+/*   By: login <login@student.42.fr>                       +#+  +:+       +#+ */
+/*                                                          +#+#+#+#+#+   +#+ */
+/*   Created: 2026/08/09 12:00:00 by login                         #+#    #+# */
+/*   Updated: 2026/08/09 12:00:00 by login                  ###   ########.fr */
+/*                                                                            */
+/* ************************************************************************** */
+#ifndef FT_LS_H
+# define FT_LS_H
+
+# include <sys/stat.h>
+# include <sys/types.h>
+# include <dirent.h>
+# include <pwd.h>
+# include <grp.h>
+# include <time.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+# include <unistd.h>
+# include <errno.h>
+# include "../mylibft/mylibft.h"
+
+typedef struct s_widths
+{
+	int	nlink;
+	int	owner;
+	int	group;
+	int	size;
+}	t_widths;
+
+typedef struct s_arglist
+{
+	char	**files;
+	int		nfiles;
+	char	**dirs;
+	int		ndirs;
+}	t_arglist;
+
+typedef struct s_options
+{
+	int	l;
+	int	big_r;
+	int	a;
+	int	r;
+	int	t;
+}	t_options;
+
+typedef struct s_entry
+{
+	char		name[256];
+	char		fullpath[4096];
+	struct stat	st;
+	int			is_link;
+	char		link_target[4096];
+}	t_entry;
+
+int			parse_args(char **argv, t_options *opts, char ***paths,
+				int *npath);
+
+int			list_path(const char *path, const t_options *opts,
+				int print_header);
+
+void		ft_error(const char *path);
+void		sort_entries(t_entry *entries, int n, const t_options *opts);
+void		print_entries_short(t_entry *entries, int n);
+
+void		mode_to_str(mode_t mode, char *buf);
+const char	*get_owner(uid_t uid);
+const char	*get_group(gid_t gid);
+
+void		print_entries_long(t_entry *entries, int n);
+t_entry		*read_entries(const char *path, const t_options *opts,
+				int *out_count);
+void		read_link_target(t_entry *entry, const char *path);
+DIR			*open_directory(const char *path, int *out_count);
+void		set_other_permissions(char *str, mode_t mode);
+void		set_group_permissions(char *str, mode_t mode);
+void		set_user_permissions(char *str, mode_t mode);
+int			cmp_time_main(const void *a, const void *b);
+void		reverse_paths_main(char **paths, int n);
+
+#endif /* FT_LS_H */
+
+
+============================================================
+FILE: mylibft/ft_printf/ft_percentcheck.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_percentcheck.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/06 15:41:41 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/20 10:06:18 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_printf.h"
+
+int	ft_percentcheck(const char *str, int position)
+{
+	if (str[position] == '%'
+		&& str[position + 1] != '%')
+		return (1);
+	else if (str[position] == '%'
+		&& str[position + 1] == '%')
+		return (1);
+	return (0);
+}
+
+
+============================================================
+FILE: mylibft/ft_printf/ft_printf.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/06 15:27:48 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/04/03 14:03:01 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_printf.h"
+
+static int	printer(const char *str, unsigned int position, va_list ap)
+{
+	if (str[position + 1] == 'c')
+		return (ft_putchar(va_arg(ap, int)));
+	else if (str[position + 1] == 's')
+		return (ft_putstr(va_arg(ap, char *)));
+	else if (str[position + 1] == 'p')
+		return (ft_void_pointer(va_arg(ap, void *)));
+	else if (str[position + 1] == 'd'
+		|| str[position + 1] == 'i')
+		return (ft_putnumber(va_arg(ap, int)));
+	else if (str[position + 1] == 'u')
+		return (ft_putunbr(va_arg(ap, unsigned int)));
+	else if (str[position + 1] == 'x')
+		return (ft_puthex(va_arg(ap, unsigned long int)));
+	else if (str[position + 1] == 'X')
+		return (ft_puthexup(va_arg(ap, unsigned int)));
+	else if (str[position + 1] == '%')
+		return (ft_putchar('%'));
+	return (-1);
+}
+
+int	ft_printf(const char *str, ...)
+{
+	unsigned int	position;
+	int				len;
+	int				printed;
+	va_list			ap;
+
+	position = 0;
+	va_start(ap, str);
+	len = 0;
+	while (str[position])
+	{
+		if (!ft_percentcheck(str, position))
+			len += ft_putchar(str[position]);
+		else if (ft_percentcheck(str, position))
+		{
+			printed = printer(str, position, ap);
+			if (printed == -1)
+				return (-1);
+			len += printed;
+			position ++;
+		}
+		position++;
+	}
+	va_end(ap);
+	return (len);
+}
+
+
+============================================================
+FILE: mylibft/ft_printf/ft_printf.h
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/06 15:33:14 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/04/03 17:57:08 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
+
+# include <stdio.h>
+# include <unistd.h>
+# include <stdarg.h>
+
+int	ft_percentcheck(const char *str, int position);
+int	ft_putchar(char c);
+int	ft_putstr(char *str);
+int	ft_putnumber(int n);
+int	ft_putunbr(unsigned int n);
+int	ft_puthex(unsigned int n);
+int	ft_puthexup(unsigned int n);
+int	ft_void_pointer(void *ptr);
+int	ft_printf(const char *str, ...);
+
+#endif
+
+
+============================================================
+FILE: mylibft/ft_printf/ft_putchar.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/06 15:31:59 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/20 10:04:27 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_printf.h"
+
+int	ft_putchar(char c)
+{
+	return (write(1, &c, 1));
+}
+
+
+============================================================
+FILE: mylibft/ft_printf/ft_puthex.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_puthex.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/11 12:30:19 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/20 10:04:44 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_printf.h"
+
+int	ft_puthex(unsigned int n)
+{
+	int	i;
+
+	i = 0;
+	if (n >= 16)
+	{
+		i += ft_puthex(n / 16);
+		i += ft_puthex(n % 16);
+	}
+	else
+	{
+		if (n >= 10)
+			ft_putchar("abcdef"[(n % 16) - 10]);
+		else
+		{
+			n += '0';
+			ft_putchar(n);
+		}
+		i ++;
+	}
+	return (i);
+}
+
+
+============================================================
+FILE: mylibft/ft_printf/ft_puthexup.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_puthexup.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/11 13:03:19 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/20 10:04:47 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_printf.h"
+
+int	ft_puthexup(unsigned int n)
+{
+	int	i;
+
+	i = 0;
+	if (n >= 16)
+	{
+		i += ft_puthexup(n / 16);
+		i += ft_puthexup(n % 16);
+	}
+	else
+	{
+		if (n >= 10)
+			ft_putchar("ABCDEF"[(n % 16) - 10]);
+		else
+		{
+			n += '0';
+			ft_putchar(n);
+		}
+		i ++;
+	}
+	return (i);
+}
+
+
+============================================================
+FILE: mylibft/ft_printf/ft_putnumber.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnumber.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/11 09:31:26 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/20 10:04:49 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_printf.h"
+
+int	ft_putnumber(int n)
+{
+	int	i;
+
+	i = 0;
+	if (n == -2147483648)
+		return (write(1, "-2147483648", 11));
+	if (n < 0)
+	{
+		ft_putchar('-');
+		n = -n;
+		i ++;
+	}
+	if (n > 9)
+	{
+		i += ft_putnumber(n / 10);
+		i += ft_putnumber(n % 10);
+	}
+	else
+	{
+		n += '0';
+		ft_putchar(n);
+		i ++;
+	}
+	return (i);
+}
+
+
+============================================================
+FILE: mylibft/ft_printf/ft_putstr.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/08 21:50:29 by bartosz           #+#    #+#             */
+/*   Updated: 2024/03/20 10:05:22 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_printf.h"
+
+int	ft_putstr(char *str)
+{
+	int	len;
+
+	len = 0;
+	if (!str)
+		return (write(1, "(null)", 6));
+	while (str[len] != '\0')
+		len ++;
+	return (write(1, str, len));
+}
+
+
+============================================================
+FILE: mylibft/ft_printf/ft_putunbr.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putunbr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/11 10:09:51 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/20 10:04:53 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_printf.h"
+
+int	ft_putunbr(unsigned int n)
+{
+	int	i;
+
+	i = 0;
+	if (n > 9)
+	{
+		i += ft_putunbr(n / 10);
+		i += ft_putunbr(n % 10);
+	}
+	else
+	{
+		n += '0';
+		i += ft_putchar(n);
+	}
+	return (i);
+}
+
+
+============================================================
+FILE: mylibft/ft_printf/ft_void_pointer.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_void_pointer.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/09 10:11:09 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/20 10:05:02 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_printf.h"
+
+static int	printer(void *ptr)
+{
+	int	len;
+
+	len = 0;
+	if ((unsigned long)ptr >= 16)
+	{
+		len += printer((void *)((unsigned long)ptr / 16));
+		len += printer((void *)((unsigned long)ptr % 16));
+	}
+	else
+		len += ft_putchar("0123456789abcdef"[(unsigned long)ptr % 16]);
+	return (len);
+}
+
+int	ft_void_pointer(void *ptr)
+{
+	if (!ptr)
+		return (ft_putstr("(nil)"));
+	write(1, "0x", 2);
+	return (printer(ptr) + 2);
+}
+
+
+============================================================
+FILE: mylibft/ft_printf/main/main.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/11 19:49:03 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/20 10:26:58 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../ft_printf.h"
+
+/*
+int	main(void)
+{
+	// char	*str = "tasdfa asfrwer aad asekniefasdfa";
+	// ft_printf("| example | %c | example |\n", ex_char());
+	// printf("| example | %c | example |\n", ex_char());
+	// ft_printf("| example | %s | example |\n", ex_str());
+	// printf("| example | %s | example |\n", ex_str());
+	// ft_printf("| example | %d | example |\n", ex_numberint());
+	// printf("| example | %d | example |\n", ex_numberint());
+	// ft_printf("| example | %i | example |\n", ex_numberint());
+	// printf("| example | %i | example |\n", ex_numberint());
+	// ft_printf("| example | %u | example |\n", ex_numberint());
+	// printf("| example | %u | example |\n", ex_numberint());
+	
+	// ft_printf("| example | %x | example |\n", 1);
+	// printf("| example | %x | example |\n", 1);
+	// ft_printf("| example | %x | example |\n", 0);
+	// printf("| example | %x | example |\n", 0);
+	// ft_printf("| example | %x | example |\n", 90);
+	// printf("| example | %x | example |\n", 90);
+	// ft_printf("| example | %x | example |\n", -90);
+	// printf("| example | %x | example |\n", -90);
+	// ft_printf("| example | %x | example |\n", 4294967295);
+	// printf("| example | %lx | example |\n", 4294967295);
+	
+	// ft_printf("| example | %X | example |\n", 1);
+	// printf("| example | %X | example |\n", 1);
+	// ft_printf("| example | %X | example |\n", 0);
+	// printf("| example | %X | example |\n", 0);
+	// ft_printf("| example | %X | example |\n", 90);
+	// printf("| example | %X | example |\n", 90);
+	// ft_printf("| example | %X | example |\n", -90);
+	// printf("| example | %X | example |\n", -90);
+	// ft_printf("| example | %X | example |\n", 4294967295);
+	// printf("| example | %lX | example |\n", 4294967295);
+	
+	// ft_printf("| example | %% | example |\n");
+	// printf("| example | %% | example |\n");
+	// ft_printf("| example | %%\n");
+	// printf("| example | %%\n");
+	// ft_printf("%% | example |\n");
+	// printf("%% | example |\n");
+
+	// ft_printf("%d\n", ft_printf("| example | %% | example |\n"));
+	// printf("%d\n", printf("| example | %% | example |\n"));
+	// int		*nrex = 0;
+	// ft_printf("%p\n", "nie");
+	// ft_printf("should be\n");
+	// printf("%p\n", "n ie");
+	// ft_printf("%p\n", NULL);
+	// printf("%p\n", NULL);
+	// ft_printf("%p\n", nrex);
+	// printf("%p\n", nrex);
+	// printf("%d\n", printf("%s", ""));
+	// ft_printf("%d\n", ft_printf("%s", ""));
+}
+// sprawdzic dla wartosci:
+// 0
+// -1
+// 1
+// 4294967295
+// 2147483647
+// -2147483648
+//
+// if we create function like this 
+// and put there it will work
+//
+// int		ex_numberint(void)
+// {
+// 	return (4294967295);
+// }
+//
+// printf("| example | %x | example |\n", 4294967295);
+*/
+
+
+============================================================
+FILE: mylibft/get_next_line/get_next_line.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/13 21:53:04 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/04/04 19:53:12 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "get_next_line.h"
+
+char	*get_line(t_lis *list)
+{
+	int		str_len;
+	char	*next_str;
+
+	if (list == NULL)
+		return (NULL);
+	str_len = len_to_newline(list);
+	next_str = malloc(sizeof(char) * (str_len + 1));
+	if (next_str == NULL)
+		return (NULL);
+	copy_str(list, next_str);
+	return (next_str);
+}
+
+int	is_newline(t_lis *list)
+{
+	int	i;
+
+	if (list == NULL)
+		return (0);
+	while (list)
+	{
+		i = 0;
+		while (list->str_buf[i] && i < BUFFER_SIZE)
+		{
+			if (list->str_buf[i] == '\n')
+				return (1);
+			i ++;
+		}
+		list = list->next;
+	}
+	return (0);
+}
+
+void	append(t_lis **list, char *buffer)
+{
+	t_lis	*new_node;
+	t_lis	*last_node;
+
+	last_node = find_last_node(*list);
+	new_node = malloc(sizeof(t_lis));
+	if (new_node == NULL)
+		return ;
+	if (last_node == NULL)
+		*list = new_node;
+	else
+		last_node->next = new_node;
+	new_node->str_buf = buffer;
+	new_node->next = NULL;
+}
+
+void	create_list(t_lis **list, int fd)
+{
+	int		read_num;
+	char	*buffer;
+
+	while (!is_newline(*list))
+	{
+		buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+		if (buffer == NULL)
+			return ;
+		read_num = read(fd, buffer, BUFFER_SIZE);
+		if (!read_num || read_num < 0)
+		{
+			free(buffer);
+			return ;
+		}
+		buffer[read_num] = '\0';
+		append(list, buffer);
+	}
+}
+
+char	*get_next_line(int fd)
+{
+	static t_lis	*list = NULL;
+	char			*next_line;
+
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	create_list(&list, fd);
+	if (list == NULL)
+		return (NULL);
+	next_line = get_line(list);
+	polish_list(&list);
+	return (next_line);
+}
+
+
+============================================================
+FILE: mylibft/get_next_line/get_next_line.h
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/13 21:53:48 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/04/04 19:54:09 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+
+# include <unistd.h>
+# include <stdlib.h>
+# include <fcntl.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
+
+typedef struct s_gnl_list
+{
+	char				*str_buf;
+	struct s_gnl_list	*next;
+}						t_lis;
+
+t_lis	*find_last_node(t_lis *list);
+int		is_newline(t_lis *list);
+int		len_to_newline(t_lis *list);
+void	dealloc(t_lis **list, t_lis *clean_node, char *buffer);
+void	polish_list(t_lis **list);
+void	copy_str(t_lis *list, char *str);
+void	append(t_lis **list, char *buffer);
+void	create_list(t_lis **list, int fd);
+char	*get_line(t_lis *list);
+char	*get_next_line(int fd);
+
+#endif
+
+
+============================================================
+FILE: mylibft/get_next_line/get_next_line_utils.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/14 08:18:18 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/04/04 19:53:23 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "get_next_line.h"
+
+t_lis	*find_last_node(t_lis *list)
+{
+	if (list == NULL)
+		return (NULL);
+	while (list->next)
+		list = list->next;
+	return (list);
+}
+
+void	dealloc(t_lis **list, t_lis *clean_node, char *buffer)
+{
+	t_lis	*ex;
+
+	if (*list == NULL)
+		return ;
+	while (*list)
+	{
+		ex = (*list)->next;
+		free((*list)->str_buf);
+		free(*list);
+		*list = ex;
+	}
+	*list = NULL;
+	if (clean_node->str_buf[0])
+		*list = clean_node;
+	else
+	{
+		free(buffer);
+		free(clean_node);
+	}
+}
+
+void	polish_list(t_lis **list)
+{
+	t_lis	*last_node;
+	t_lis	*clean_node;
+	int		i;
+	int		j;
+	char	*buffer;
+
+	i = 0;
+	j = 0;
+	buffer = malloc(sizeof(char) * BUFFER_SIZE + 1);
+	clean_node = malloc(sizeof(t_lis));
+	if (buffer == NULL || clean_node == NULL)
+		return ;
+	last_node = find_last_node(*list);
+	while (last_node->str_buf[i] && last_node->str_buf[i] != '\n')
+		i ++;
+	while (last_node->str_buf[i] && last_node->str_buf[++i])
+		buffer[j++] = last_node->str_buf[i];
+	buffer[j] = '\0';
+	clean_node->str_buf = buffer;
+	clean_node->next = NULL;
+	dealloc(list, clean_node, buffer);
+}
+
+void	copy_str(t_lis *list, char *str)
+{
+	int	i;
+	int	j;
+
+	j = 0;
+	if (list == NULL)
+		return ;
+	while (list)
+	{
+		i = 0;
+		while (list->str_buf[i])
+		{
+			if (list->str_buf[i] == '\n')
+			{
+				str[j++] = '\n';
+				str[j] = '\0';
+				return ;
+			}
+			str[j++] = list->str_buf[i++];
+		}
+		list = list->next;
+	}
+	str[j] = '\0';
+}
+
+int	len_to_newline(t_lis *list)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	if (list == NULL)
+		return (0);
+	while (list)
+	{
+		j = 0;
+		while (list->str_buf[j])
+		{
+			if (list->str_buf[j] == '\n')
+			{
+				i ++;
+				return (i);
+			}
+			i ++;
+			j ++;
+		}
+		list = list->next;
+	}
+	return (i);
+}
+
+
+============================================================
+FILE: mylibft/get_next_line/main/main.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/20 10:20:03 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/20 10:25:14 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../get_next_line.h"
+#include <stdio.h>
+/*
+int	main(void)
+{
+	int	fd;
+	int	i = 0;
+	fd = open("txtfiles/1-brouette.txt", O_RDONLY);
+	if (fd == -1)
+		printf("error");
+	char	*linijka;
+	while ((linijka = get_next_line(fd)) != NULL)
+	{
+		printf("%s", linijka);
+		free(linijka);
+	}
+	close(fd);
+	return (0);
+	// -D BUFFER_SIZE=1
+	// -D BUFFER_SIZE=5
+	// -D BUFFER_SIZE=8
+	// -D BUFFER_SIZE=10
+	// -D BUFFER_SIZE=100
+	// -D BUFFER_SIZE=50
+	// -D BUFFER_SIZE=9999
+	// -D BUFFER_SIZE=10000
+	// -D BUFFER_SIZE=10000000
+	// cc main/main.c get_next_line.c get_next_line_utils.c -D BUFFER_SIZE=1
+}
+*/
+
+
+============================================================
+FILE: mylibft/libft/ft_atoi.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/29 10:37:08 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/02/29 11:51:30 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+int	ft_atoi(const char *nptr)
+{
+	char	*nr;
+	int		i;
+	int		sign;
+	int		num;
+
+	num = 0;
+	sign = 1;
+	i = 0;
+	nr = (char *) nptr;
+	while (nr[i] == 32 || nr[i] == '\r' || nr[i] == '\n'
+		|| nr[i] == '\v' || nr[i] == '\f' || nr[i] == '\t')
+		i ++;
+	if (nr[i] == '-' || nr[i] == '+')
+	{
+		if (nr[i] == '-')
+			sign = -1;
+		i ++;
+	}
+	while (nr[i] <= '9' && nr[i] >= '0')
+	{
+		num = num * 10 + nr[i] - '0';
+		i ++;
+	}
+	return (sign * num);
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_bzero.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/27 12:51:20 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/06 11:43:48 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+void	ft_bzero(void *s, size_t n)
+{
+	unsigned char	*ptr;
+
+	ptr = (unsigned char *)s;
+	while (n-- > 0)
+	{
+		ft_memset(ptr, '\0', 1);
+		ptr++;
+	}
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_calloc.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/29 11:55:58 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/10 13:37:09 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	void	*str;
+	size_t	mem;
+
+	mem = nmemb * size;
+	if (mem && mem / nmemb != size)
+		return (NULL);
+	str = malloc(nmemb * size);
+	if (!str)
+		return (NULL);
+	ft_bzero(str, nmemb * size);
+	return (str);
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_isalnum.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/27 11:00:35 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/02/27 11:17:18 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+int	ft_isalnum(int character)
+{
+	if (ft_isdigit(character) == 1 || ft_isalpha(character) == 1)
+		return (1);
+	return (0);
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_isalpha.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/27 10:10:07 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/02/27 11:17:14 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+int	ft_isalpha(int letter)
+{
+	if ((letter <= 'z' && letter >= 'a')
+		|| (letter <= 'Z' && letter >= 'A'))
+		return (1);
+	return (0);
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_isascii.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/27 11:16:28 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/02/27 11:27:52 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+int	ft_isascii(int character)
+{
+	if (character <= 127 && character >= 0)
+		return (1);
+	return (0);
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_isdigit.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/27 10:46:55 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/02/27 11:17:06 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+int	ft_isdigit(int digit)
+{
+	if (digit <= '9' && digit >= '0')
+		return (1);
+	return (0);
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_isprint.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/27 11:28:26 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/02/27 11:31:15 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+int	ft_isprint(int character)
+{
+	if (character <= 126 && character >= 32)
+		return (1);
+	return (0);
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_itoa.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/29 18:04:04 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/10 13:50:09 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+static int	d_count(int number)
+{
+	int	counter;
+
+	counter = 0;
+	if (number == 0)
+		return (1);
+	if (number < 0)
+		counter++;
+	while (number)
+	{
+		number /= 10;
+		counter++;
+	}
+	return (counter);
+}
+
+static void	min_int(char *number, int *n, int *len)
+{
+	if (*n == -2147483648)
+	{
+		number[(*len)--] = (-(*n % 10)) + '0';
+		*n /= 10;
+	}
+}
+
+char	*ft_itoa(int n)
+{
+	char	*number;
+	int		len;
+
+	len = d_count(n);
+	number = (char *)malloc(sizeof(char) * (len + 1));
+	if (!number)
+		return (0);
+	number[len--] = '\0';
+	if (n == 0)
+		number[0] = '0';
+	min_int(number, &n, &len);
+	if (n < 0)
+	{
+		number[0] = '-';
+		n *= -1;
+	}
+	while (n)
+	{
+		number[len--] = n % 10 + '0';
+		n /= 10;
+	}
+	return (number);
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_lstadd_back.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/10 17:51:12 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/20 10:14:31 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+void	ft_lstadd_back(t_list **lst, t_list *new)
+{
+	t_list	*last;
+
+	if (!*lst)
+	{
+		*lst = new;
+		return ;
+	}
+	last = ft_lstlast(*lst);
+	last -> next = new;
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_lstadd_front.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/10 17:59:20 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/20 10:11:44 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+void	ft_lstadd_front(t_list **lst, t_list *new)
+{
+	if (lst && new)
+	{
+		new -> next = *lst;
+		*lst = new;
+	}
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_lstclear.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/10 19:43:40 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/20 10:12:19 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+void	ft_lstclear(t_list **lst, void (*del)(void *))
+{
+	t_list	*tmp;
+
+	while (*lst)
+	{
+		tmp = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = tmp;
+	}
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_lstdelone.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/10 18:57:47 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/20 10:14:52 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
+{
+	del(lst -> content);
+	free(lst);
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_lstiter.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/10 19:45:42 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/20 10:09:04 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+void	ft_lstiter(t_list *lst, void (*f)(void *))
+{
+	while (lst)
+	{
+		f (lst -> content);
+		lst = lst -> next;
+	}
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_lstlast.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/10 17:48:39 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/20 10:14:12 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+t_list	*ft_lstlast(t_list *lst)
+{
+	if (lst == NULL)
+		return (NULL);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_lstmap.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/10 19:48:08 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/20 10:14:17 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+{
+	t_list	*new;
+	t_list	*tmp;
+
+	if (!lst || !f)
+		return (NULL);
+	new = ft_lstnew(f(lst -> content));
+	if (!new)
+		return (NULL);
+	tmp = new;
+	lst = lst -> next;
+	while (lst)
+	{
+		tmp -> next = ft_lstnew(f(lst -> content));
+		if (!tmp -> next)
+		{
+			ft_lstclear(&new, del);
+			return (NULL);
+		}
+		tmp = tmp -> next;
+		lst = lst -> next;
+	}
+	return (new);
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_lstnew.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/10 17:12:35 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/20 10:11:32 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+t_list	*ft_lstnew(void *content)
+{
+	t_list	*node;
+
+	node = (t_list *)malloc(sizeof(t_list));
+	if (!node)
+		return (NULL);
+	node->content = content;
+	node->next = NULL;
+	return (node);
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_lstsize.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/10 17:39:40 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/20 10:14:46 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+int	ft_lstsize(t_list *lst)
+{
+	size_t	len;
+
+	len = 0;
+	while (lst)
+	{
+		len++;
+		lst = lst -> next;
+	}
+	return (len);
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_memchr.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/28 16:44:04 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/20 10:13:48 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+void	*ft_memchr(const void *s, int c, size_t n)
+{
+	while (n-- > 0 && s)
+	{
+		if (*(unsigned char *) s == (unsigned char) c)
+			return ((unsigned char *)s);
+		s ++;
+	}
+	return (0);
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_memcmp.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/04 10:40:00 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/04 12:29:30 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
+{
+	while (n-- > 0)
+	{
+		if (*(char *)s1 != *(char *)s2)
+			return (*(unsigned char *)s1 - *(unsigned char *)s2);
+		s1 ++;
+		s2 ++;
+	}
+	return (0);
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_memcpy.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/27 14:40:26 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/10 13:49:48 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+{
+	const unsigned char	*srcptr;
+	unsigned char		*destptr;
+
+	if (!dest && !src)
+		return (dest);
+	destptr = (unsigned char *)dest;
+	srcptr = (const unsigned char *)src;
+	while (n--)
+		*destptr++ = *srcptr++;
+	return (dest);
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_memmove.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/27 15:28:24 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/05 09:43:12 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+void	*ft_memmove(void *dest, const void *src, size_t n)
+{
+	char	*tmp_src;
+	char	*tmp_dest;
+	size_t	i;
+
+	if (!dest && !src)
+		return (0);
+	tmp_src = (char *) src;
+	tmp_dest = (char *) dest;
+	if (tmp_dest > tmp_src)
+	{
+		while (n -- > 0)
+			tmp_dest[n] = tmp_src[n];
+	}
+	else
+	{
+		i = 0;
+		while (i < n)
+		{
+			tmp_dest[i] = tmp_src[i];
+			i ++;
+		}
+	}
+	return (dest);
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_memset.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/27 12:07:37 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/01 14:24:08 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+void	*ft_memset(void *s, int c, size_t n)
+{
+	unsigned char	*ptr;
+
+	ptr = (unsigned char *) s;
+	while (n-- > 0)
+	{
+		*ptr = (unsigned char) c;
+		ptr ++;
+	}
+	return (s);
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_putchar_fd.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/01 14:11:49 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/01 15:02:45 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_putendl_fd.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/01 15:57:07 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/01 16:07:36 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+void	ft_putendl_fd(char *s, int fd)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+		write(fd, &s[i++], 1);
+	write(fd, "\n", 1);
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_putnbr_fd.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/01 16:13:25 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/01 16:46:30 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+void	ft_putnbr_fd(int n, int fd)
+{
+	if (n == -2147483648)
+	{
+		write(fd, "-2147483648", 11);
+		return ;
+	}
+	if (n < 0)
+	{
+		write(fd, "-", 1);
+		n = -n;
+	}
+	if (n > 9)
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putnbr_fd(n % 10, fd);
+	}
+	else
+	{
+		n += '0';
+		write(fd, &n, 1);
+	}
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_putstr_fd.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/01 15:36:28 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/01 15:53:41 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+		write(fd, &s[i++], 1);
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_split.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/01 11:19:37 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/10 13:51:27 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+static int	count_words(char const *s, char c)
+{
+	size_t	counter;
+	int		switcher;
+
+	counter = 0;
+	while (*s)
+	{
+		switcher = 0;
+		while (*s && *s == c)
+			s++;
+		while (*s && *s != c)
+		{
+			if (switcher == 0)
+			{
+				counter++;
+				switcher = 1;
+			}
+			s++;
+		}
+	}
+	return (counter);
+}
+
+static int	safe_malloc(char **arr, int position, size_t buffer)
+{
+	int	i;
+
+	i = 0;
+	arr[position] = malloc(buffer);
+	if (arr[position] == 0)
+	{
+		while (i < position)
+		{
+			free(arr[i]);
+			i++;
+		}
+		free(arr);
+		return (1);
+	}
+	return (0);
+}
+
+static int	fill(char **arr, char const *s, char c)
+{
+	size_t	len;
+	int		i;
+
+	i = 0;
+	while (*s)
+	{
+		len = 0;
+		while (*s && *s == c)
+			s++;
+		while (*s && *s != c)
+		{
+			len++;
+			s++;
+		}
+		if (len)
+		{
+			if (safe_malloc(arr, i, len + 1))
+				return (1);
+			ft_strlcpy(arr[i], s - len, len + 1);
+			i++;
+		}
+	}
+	return (0);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	size_t	words;
+	char	**arr;
+
+	if (s == 0)
+		return (0);
+	words = count_words(s, c);
+	arr = malloc(sizeof(char *) * (words + 1));
+	if (!arr)
+		return (0);
+	arr[words] = NULL;
+	if (fill(arr, s, c))
+		return (0);
+	return (arr);
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_strchr.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/27 19:15:04 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/05 18:27:38 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+char	*ft_strchr(const char *s, int c)
+{
+	if (!s)
+		return (0);
+	while (*s)
+	{
+		if (*s == (char) c)
+			return ((char *) s);
+		s ++;
+	}
+	if (c == '\0')
+		return ((char *) s);
+	return (0);
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_strdup.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/29 11:57:19 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/05 09:54:40 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+char	*ft_strdup(const char *s)
+{
+	char	*newstr;
+	int		i;
+
+	i = 0;
+	newstr = (char *) malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!newstr)
+		return (0);
+	if (*s == '\0')
+	{
+		newstr[i] = '\0';
+		return (newstr);
+	}
+	while (*s != 0)
+	{
+		newstr[i] = *s;
+		i ++;
+		s ++;
+	}
+	newstr[i] = '\0';
+	return (newstr);
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_striteri.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/01 12:13:31 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/09 15:36:49 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+{
+	unsigned int	i;
+
+	i = 0;
+	while (s[i ++])
+		f(i - 1, &s[i - 1]);
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_strjoin.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/29 14:04:56 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/05 17:49:26 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	int		len;
+	int		i;
+	int		j;
+	char	*newstr;
+
+	i = 0;
+	j = 0;
+	len = ft_strlen(s1) + ft_strlen(s2);
+	newstr = (char *) malloc(sizeof(char) * (len + 1));
+	if (newstr == NULL)
+		return (0);
+	while (s1[i] != '\0')
+		newstr[j ++] = s1[i ++];
+	i = 0;
+	while (s2[i] != '\0')
+		newstr[j ++] = s2[i ++];
+	newstr[j] = '\0';
+	return (newstr);
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_strlcat.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/27 17:43:27 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/10 13:51:47 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+size_t	ft_strlcat(char *dest, char *src, size_t size)
+{
+	unsigned int	lend;
+	size_t			i;
+	unsigned int	lens;
+
+	if ((!dest || !src) && !size)
+		return (0);
+	i = 0;
+	lens = ft_strlen(src);
+	lend = ft_strlen(dest);
+	if (size == 0 && dest == 0)
+		return (lens);
+	if (size == 0 || size <= lend)
+		return (lens + size);
+	while (src[i] && lend + i < size - 1)
+	{
+		dest[lend + i] = src[i];
+		i++;
+	}
+	dest[lend + i] = '\0';
+	return (lend + lens);
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_strlcpy.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/27 15:27:53 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/05 08:35:36 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+{
+	unsigned int	i;
+	unsigned int	len;
+
+	i = 0;
+	len = ft_strlen(src);
+	if (size != 0)
+	{
+		while (src[i] != '\0' && i < size - 1)
+		{
+			dest[i] = src[i];
+			i++;
+		}
+		dest[i] = '\0';
+	}
+	return (len);
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_strlen.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/27 11:33:52 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/02/27 11:45:24 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+size_t	ft_strlen(const char *s)
+{
+	int	counter;
+
+	counter = 0;
+	while (*s++ != 0)
+		counter ++;
+	return (counter);
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_strmapi.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/29 18:37:28 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/09 12:48:20 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+	char			*newstr;
+	unsigned int	i;
+
+	i = 0;
+	newstr = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!newstr)
+		return (0);
+	while (s[i])
+	{
+		newstr[i] = f(i, s[i]);
+		i++;
+	}
+	newstr[i] = '\0';
+	return (newstr);
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_strncmp.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/28 10:40:38 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/05 13:15:10 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	if (n == 0)
+		return (0);
+	while ((*s1 != 0 || *s2 != 0) && n-- > 0)
+	{
+		if (*s1 != *s2)
+			return (*(unsigned char *) s1 - *(unsigned char *) s2);
+		s1 ++;
+		s2 ++;
+	}
+	return (0);
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_strnstr.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/28 17:23:14 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/10 13:51:53 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+char	*ft_strnstr(const char *big, const char *little, size_t len)
+{
+	size_t	i;
+	size_t	j;
+	char	*str;
+	char	*to_find;
+
+	if (!big && !len)
+		return (NULL);
+	if (!*little)
+		return ((char *)big);
+	to_find = (char *)little;
+	str = (char *)big;
+	i = 0;
+	j = 0;
+	if (*to_find == '\0')
+		return (str);
+	while (str[i] != 0 && len-- > 0)
+	{
+		while (str[i + j] == to_find[j] && str[i + j] != 0 && j < len + 1)
+			j++;
+		if (to_find[j] == 0)
+			return (str + i);
+		i++;
+		j = 0;
+	}
+	return (0);
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_strrchr.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/28 09:33:09 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/02/28 10:40:04 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+char	*ft_strrchr(const char *s, int c)
+{
+	int	len;
+
+	len = ft_strlen(s);
+	if (c == 0)
+		return ((char *)s + len);
+	while (len >= 0)
+	{
+		if (s[len] == (char) c)
+			return ((char *) s + len);
+		len--;
+	}
+	return (NULL);
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_strtrim.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/29 16:05:32 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/05 13:15:47 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+static char	*new_str(const char *s1, size_t start, size_t len)
+{
+	char	*str;
+	size_t	i;
+
+	if (len <= 0 || start >= ft_strlen(s1))
+		return (ft_strdup(""));
+	str = (char *) malloc(sizeof(char) * (len + 1));
+	if (!str)
+		return (0);
+	str[len] = '\0';
+	if (!str)
+		return (0);
+	i = 0;
+	while (i < len)
+	{
+		str[i] = s1[start + i];
+		i ++;
+	}
+	return (str);
+}
+
+static int	to_trim(const char *set, char c)
+{
+	int	i;
+
+	i = 0;
+	while (set[i])
+	{
+		if (c == set[i])
+			return (1);
+		i ++;
+	}
+	return (0);
+}
+
+char	*ft_strtrim(char const *s1, char const *set)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = ft_strlen(s1) - 1;
+	if (ft_strlen(s1) == 0)
+		return (ft_strdup(""));
+	while (to_trim(set, s1[i]))
+		i ++;
+	while (to_trim(set, s1[j]))
+		j --;
+	return (new_str(s1, i, j - (i - 1)));
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_substr.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/29 11:54:09 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/06 10:31:26 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*newstr;
+	size_t	i;
+
+	i = 0;
+	if (!s)
+		return (NULL);
+	if (start > ft_strlen(s))
+		len = 0;
+	else if (len > (ft_strlen(s) - start))
+		len = ft_strlen(s) - start;
+	newstr = (char *) malloc(sizeof(char) * (len + 1));
+	if (!newstr)
+		return (NULL);
+	while (i < len)
+	{
+		newstr[i] = s[start];
+		start ++;
+		i ++;
+	}
+	newstr[i] = '\0';
+	return (newstr);
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_tolower.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/27 19:13:06 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/02/27 19:13:46 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+int	ft_tolower(int c)
+{
+	if (c <= 'Z' && c >= 'A')
+		return (c + 32);
+	return (c);
+}
+
+
+============================================================
+FILE: mylibft/libft/ft_toupper.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/27 19:03:43 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/02/27 19:12:38 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+int	ft_toupper(int c)
+{
+	if (c <= 'z' && c >= 'a')
+		return (c - 32);
+	return (c);
+}
+
+
+============================================================
+FILE: mylibft/libft/libft.h
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/28 12:13:10 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/10 20:01:07 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+// it has to be there to avaid double inclusion of the file
+#ifndef LIBFT_H
+# define LIBFT_H
+
+# include <fcntl.h>
+# include <stddef.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+
+// Mandatory part functions
+int		ft_isalpha(int letter);
+int		ft_isdigit(int digit);
+int		ft_isalnum(int character);
+int		ft_isascii(int character);
+int		ft_isprint(int character);
+size_t	ft_strlen(const char *s);
+void	*ft_memset(void *s, int c, size_t n);
+void	ft_bzero(void *s, size_t n);
+void	*ft_memcpy(void *dest, const void *src, size_t n);
+void	*ft_memmove(void *dest, const void *src, size_t n);
+size_t	ft_strlcpy(char *dst, const char *src, size_t size);
+size_t	ft_strlcat(char *dest, char *src, size_t size);
+int		ft_toupper(int c);
+int		ft_tolower(int c);
+char	*ft_strchr(const char *s, int c);
+char	*ft_strrchr(const char *s, int c);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+void	*ft_memchr(const void *s, int c, size_t n);
+int		ft_memcmp(const void *s1, const void *s2, size_t n);
+char	*ft_strnstr(const char *big, const char *little, size_t len);
+int		ft_atoi(const char *nptr);
+
+// Functions with malloc
+void	*ft_calloc(size_t nmemb, size_t size);
+char	*ft_strdup(const char *s);
+
+// Additional functions
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strtrim(char const *s1, char const *set);
+char	**ft_split(char const *s, char c);
+char	*ft_itoa(int n);
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+void	ft_striteri(char *s, void (*f)(unsigned int, char *));
+
+// Functions with file descriptors
+void	ft_putchar_fd(char c, int fd);
+void	ft_putstr_fd(char *s, int fd);
+void	ft_putendl_fd(char *s, int fd);
+void	ft_putnbr_fd(int n, int fd);
+
+// Bonus functions
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}					t_list;
+
+// Bonus functions prototypes
+t_list	*ft_lstnew(void *content);
+void	ft_lstadd_front(t_list **lst, t_list *new);
+int		ft_lstsize(t_list *lst);
+t_list	*ft_lstlast(t_list *lst);
+void	ft_lstadd_back(t_list **lst, t_list *new);
+void	ft_lstdelone(t_list *lst, void (*del)(void *));
+void	ft_lstclear(t_list **lst, void (*del)(void *));
+void	ft_lstiter(t_list *lst, void (*f)(void *));
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+#endif
+
+============================================================
+FILE: mylibft/libft/tests/tester.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tester.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/27 10:53:33 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/03/20 10:16:04 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+#include <string.h>
+#include <string.h>
+#include <ctype.h>
+#include <stdlib.h>
+#include <fcntl.h>
+#include <unistd.h>
+/*
+int	main(void)
+{
+	// // ft_split.c
+	// printf("SPLIT------------------ \n");
+	// char	*ft_strsplit = "     taknie  nas e  ";
+	// char	character_to_split = ' ';
+	// char	**listofstr = ft_split(ft_strsplit, character_to_split);
+	// int		i = 0;
+	// while (i < 3)
+	// {
+	// 	printf("%s\n", listofstr[i]);
+	// 	//free(listofstr[i]);
+	// 	i ++;
+	// }
+	// free(listofstr);
+	// ft_putnbr_fd
+	printf("ft_putnbr_fd---------\n");
+	int	putnbrfd = open("examplenbr.txt", O_RDWR | O_CREAT, 0644);
+	ft_putnbr_fd(123, putnbrfd);
+	// ft_putendl_fd
+	printf("ft_putendl_fd---------\n");
+	int	putendl = open("exampleend.txt", O_RDWR | O_CREAT, 0644);
+	ft_putendl_fd("tak", putendl);
+	// ft_putstr_fd
+	printf("ft_putstr_fd---------\n");
+	int	putchar = open("examplechar.txt", O_RDWR | O_CREAT, 0644);
+	ft_putstr_fd("tak", putchar);
+	// ft_putchar_fd
+	printf("ft_putchar_fd---------\n");
+	// Utworzyc plik example.txt i sprawdzic
+	int	putfd = open("example.txt", O_RDWR | O_CREAT, 0644);
+	// O_RDWR read/write mode
+	ft_putchar_fd('a', putfd);
+	// ft_striteri
+	void	ftv_toupper(unsigned int a, char *c)
+	{
+		(void) a;
+		if (*c <= 'z' && *c >= 'a')
+			*c = (*c - 32);
+	}
+	void	ftv_tolower(unsigned int a, char *c)
+	{
+		(void) a;
+		if (*c <= 'Z' && *c >= 'A')
+			*c = (*c + 32);
+	}
+	printf("strinteri---------\n");
+	char	strinteri[10] = "tak";
+	char	strinter1[10] = "TAK";
+	ft_striteri(strinteri, ftv_toupper);
+	for (int i = 0; i < 3; i ++)
+	{
+		if (strinteri[i] != strinter1[i])
+			printf (" 0 ");
+		else
+			printf (" 1 ");
+	}
+	ft_striteri(strinter1, ftv_tolower);
+	char	strinter2[10] = "tak";
+	for (int i = 0; i < 3; i ++)
+	{
+		if (strinter1[i] != strinter2[i])
+			printf (" 0 ");
+		else
+			printf (" 1 ");
+	}
+	printf("\n");
+	// ft_strmapi
+	char	fto_toupper(unsigned int a, char c)
+	{
+		(void) a;
+		if (c <= 'z' && c >= 'a')
+			return (c - 32);
+		return (c);
+	}
+	char	fto_tolower(unsigned int a, char c)
+	{
+		(void) a;
+		if (c <= 'Z' && c >= 'A')
+			return (c + 32);
+		return (c);
+	}
+	printf("strmapi---------\n");
+	char	*s = ft_strmapi("tak", fto_toupper);
+	char	ss[10] = "TAK";
+	for (int i = 0; i < 3; i ++)
+	{
+		if (s[i] != ss[i])
+			printf (" 0 ");
+		else
+			printf (" 1 ");
+	}
+	char	*ss1 = ft_strmapi("TAK", fto_tolower);
+	char	s1[10] = "tak";
+	for (int i = 0; i < 3; i ++)
+	{
+		if (ss1[i] != s1[i])
+			printf (" 0 ");
+		else
+			printf (" 1 ");
+	}
+	printf("\n");
+	// itoa
+	printf("ITOA---------\n");
+	printf("%d ", ft_atoi(ft_itoa(-2147483647)) == -2147483647);
+	printf("%d ", ft_atoi(ft_itoa(0)) == 0);
+	printf("%d ", ft_atoi(ft_itoa(-32)) == -32);
+	printf("%d\n", ft_atoi(ft_itoa(2147483647)) == 2147483647);
+	// strtrim
+	printf("STRTRIM---------\n");
+	char	napis3[100] = " dNna Nie dial ";
+	char	napis13[100] = " ";
+	char	*trimedstring;
+	trimedstring = ft_strtrim(napis3, napis13);
+	printf("%s\n", trimedstring);
+	//substr
+	printf("SUBSTR---------\n");
+	char	napis11[100] = "Nie";
+	char	*napis21 = ft_substr(napis11, 2, 2);
+	printf("%s\n", napis21);
+	//strdup
+	printf("STRDUP---------\n");
+	char	napis10[100] = "jasderq";
+	char	*napis20 = strdup(napis10);
+	char	*napis30 = ft_strdup(napis10);
+	printf("%s %s\n", napis20, napis30);
+	//calloc
+	printf("CALLOC---------\n");
+	int	*ptr = (int *) calloc(10, sizeof(int));
+	int	*ptr1 = (int *) ft_calloc(10, sizeof(int));
+	for (int i = 0; i < 15; i++)
+		printf("%d", ptr[i]);
+	printf("\n");
+	for (int i = 0; i < 15; i++)
+		printf("%d", ptr1[i]);
+	printf("\n");
+	//atoi
+	printf("ATOI---------\n");
+	char liczba[13] = "  -324";
+	printf("%d ", ft_atoi(liczba) == -324);
+	printf("%d ", ft_atoi("  	0") == 0);
+	printf("%d ", ft_atoi("-+3") == 0);
+	printf("%d\n", ft_atoi("234f43") == 234);
+}
+*/
+
+
+============================================================
+FILE: mylibft/mylibft.h
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mylibft.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkotwica <bkotwica@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/04 07:41:24 by bkotwica          #+#    #+#             */
+/*   Updated: 2024/04/04 19:54:38 by bkotwica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef MYLIBFT_H
+# define MYLIBFT_H
+
+# include "ft_printf/ft_printf.h"
+# include "get_next_line/get_next_line.h"
+# include "libft/libft.h"
+
+#endif
+
+
+============================================================
+FILE: srcs/error.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                          :::      :::::::: */
+/*   ft_ls.h                                              :+:      :+:    :+: */
+/*                                                        +:+ +:+         +:+ */
+/*   By: login <login@student.42.fr>                       +#+  +:+       +#+ */
+/*                                                          +#+#+#+#+#+   +#+ */
+/*   Created: 2026/08/09 12:00:00 by login                         #+#    #+# */
+/*   Updated: 2026/08/09 12:00:00 by login                  ###   ########.fr */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/ft_ls.h"
+
+void	ft_error(const char *path)
+{
+	fprintf(stderr, "ft_ls: %s: %s\n", path, strerror(errno));
+}
+
+
+============================================================
+FILE: srcs/list_dir.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                          :::      :::::::: */
+/*   ft_ls.h                                              :+:      :+:    :+: */
+/*                                                        +:+ +:+         +:+ */
+/*   By: login <login@student.42.fr>                       +#+  +:+       +#+ */
+/*                                                          +#+#+#+#+#+   +#+ */
+/*   Created: 2026/08/09 12:00:00 by login                         #+#    #+# */
+/*   Updated: 2026/08/09 12:00:00 by login                  ###   ########.fr */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/ft_ls.h"
+
+static long	compute_total(t_entry *entries, int count)
+{
+	long	total;
+	int		i;
+
+	total = 0;
+	i = 0;
+	while (i < count)
+	{
+		total += entries[i].st.st_blocks;
+		i++;
+	}
+	return (total / 2);
+}
+
+static int	is_recursive_dir(t_entry *entry, const t_options *opts)
+{
+	if (!S_ISDIR(entry->st.st_mode))
+		return (0);
+	if (!opts->a && entry->name[0] == '.')
+		return (0);
+	if (strcmp(entry->name, ".") == 0)
+		return (0);
+	if (strcmp(entry->name, "..") == 0)
+		return (0);
+	return (1);
+}
+
+static int	recurse_dirs(t_entry *entries, int count, const t_options *opts)
+{
+	int	i;
+	int	ret;
+
+	i = 0;
+	ret = 0;
+	while (i < count)
+	{
+		if (is_recursive_dir(&entries[i], opts))
+		{
+			printf("\n");
+			if (list_path(entries[i].fullpath, opts, 1) != 0)
+				ret = 1;
+		}
+		i++;
+	}
+	return (ret);
+}
+
+static int	list_directory(const char *path, const t_options *opts,
+		int print_header)
+{
+	t_entry	*entries;
+	int		count;
+	int		ret;
+
+	if (print_header)
+		printf("%s:\n", path);
+	entries = read_entries(path, opts, &count);
+	if (count == -1)
+		return (1);
+	sort_entries(entries, count, opts);
+	if (opts->l)
+		printf("total %ld\n", compute_total(entries, count));
+	if (opts->l)
+		print_entries_long(entries, count);
+	else
+		print_entries_short(entries, count);
+	ret = 0;
+	if (opts->big_r)
+		ret = recurse_dirs(entries, count, opts);
+	free(entries);
+	return (ret);
+}
+
+int	list_path(const char *path, const t_options *opts, int print_header)
+{
+	struct stat	st;
+	t_entry		e;
+
+	if (lstat(path, &st) == -1)
+	{
+		ft_error(path);
+		return (1);
+	}
+	if (S_ISDIR(st.st_mode))
+		return (list_directory(path, opts, print_header));
+	strncpy(e.name, path, sizeof(e.name) - 1);
+	e.name[sizeof(e.name) - 1] = '\0';
+	strncpy(e.fullpath, path, sizeof(e.fullpath) - 1);
+	e.fullpath[sizeof(e.fullpath) - 1] = '\0';
+	e.st = st;
+	e.is_link = S_ISLNK(st.st_mode);
+	e.link_target[0] = '\0';
+	if (e.is_link)
+		read_link_target(&e, path);
+	if (opts->l)
+		print_entries_long(&e, 1);
+	else
+		printf("%s\n", e.name);
+	return (0);
+}
+
+
+============================================================
+FILE: srcs/list_dir_utils.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                          :::      :::::::: */
+/*   ft_ls.h                                              :+:      :+:    :+: */
+/*                                                        +:+ +:+         +:+ */
+/*   By: login <login@student.42.fr>                       +#+  +:+       +#+ */
+/*                                                          +#+#+#+#+#+   +#+ */
+/*   Created: 2026/08/09 12:00:00 by login                         #+#    #+# */
+/*   Updated: 2026/08/09 12:00:00 by login                  ###   ########.fr */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/ft_ls.h"
+
+static void	build_fullpath(char *dst, const char *dir, const char *name)
+{
+	size_t	len;
+
+	len = strlen(dir);
+	if (len > 0 && dir[len - 1] == '/')
+		snprintf(dst, 4096, "%s%s", dir, name);
+	else
+		snprintf(dst, 4096, "%s/%s", dir, name);
+}
+
+static t_entry	*entries_push(t_entry **arr, int *count, int *cap)
+{
+	t_entry	*tmp;
+
+	if (*count == *cap)
+	{
+		if (*cap == 0)
+			*cap = 32;
+		else
+			*cap = *cap * 2;
+		tmp = realloc(*arr, (size_t)(*cap) * sizeof(t_entry));
+		if (!tmp)
+		{
+			perror("ft_ls: realloc");
+			free(*arr);
+			exit(1);
+		}
+		*arr = tmp;
+	}
+	return (&(*arr)[(*count)++]);
+}
+
+static void	fill_entry(t_entry *entry, const char *path, const char *name)
+{
+	strncpy(entry->name, name, sizeof(entry->name) - 1);
+	entry->name[sizeof(entry->name) - 1] = '\0';
+	build_fullpath(entry->fullpath, path, name);
+	if (lstat(entry->fullpath, &entry->st) == -1)
+	{
+		ft_error(entry->fullpath);
+		memset(&entry->st, 0, sizeof(entry->st));
+	}
+	entry->is_link = S_ISLNK(entry->st.st_mode);
+	entry->link_target[0] = '\0';
+	if (entry->is_link)
+		read_link_target(entry, entry->fullpath);
+}
+
+void	read_link_target(t_entry *entry, const char *path)
+{
+	ssize_t	len;
+
+	len = readlink(path, entry->link_target,
+			sizeof(entry->link_target) - 1);
+	if (len >= 0)
+		entry->link_target[(size_t)len] = '\0';
+}
+
+t_entry	*read_entries(const char *path, const t_options *opts, int *out_count)
+{
+	DIR				*dir;
+	struct dirent	*de;
+	t_entry			*entries;
+	int				count;
+	int				cap;
+
+	entries = NULL;
+	count = 0;
+	cap = 0;
+	dir = open_directory(path, out_count);
+	if (!dir)
+		return (NULL);
+	de = readdir(dir);
+	while (de)
+	{
+		if (opts->a || de->d_name[0] != '.')
+			fill_entry(entries_push(&entries, &count, &cap),
+				path, de->d_name);
+		de = readdir(dir);
+	}
+	closedir(dir);
+	*out_count = count;
+	return (entries);
+}
+
+
+============================================================
+FILE: srcs/main.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                          :::      :::::::: */
+/*   ft_ls.h                                              :+:      :+:    :+: */
+/*                                                        +:+ +:+         +:+ */
+/*   By: login <login@student.42.fr>                       +#+  +:+       +#+ */
+/*                                                          +#+#+#+#+#+   +#+ */
+/*   Created: 2026/08/09 12:00:00 by login                         #+#    #+# */
+/*   Updated: 2026/08/09 12:00:00 by login                  ###   ########.fr */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/ft_ls.h"
+
+static int	cmp_alpha(const void *a, const void *b)
+{
+	return (strcmp(*(const char **)a, *(const char **)b));
+}
+
+static void	classify(char **paths, int npath, t_arglist *out, int *exit_code)
+{
+	struct stat	st;
+	int			i;
+
+	out->files = malloc((size_t)npath * sizeof(char *));
+	out->dirs = malloc((size_t)npath * sizeof(char *));
+	if (!out->files || !out->dirs)
+		exit(1);
+	out->nfiles = 0;
+	out->ndirs = 0;
+	i = 0;
+	while (i < npath)
+	{
+		if (lstat(paths[i], &st) == -1)
+		{
+			ft_error(paths[i]);
+			*exit_code = 2;
+		}
+		else if (S_ISDIR(st.st_mode))
+			out->dirs[out->ndirs++] = paths[i];
+		else
+			out->files[out->nfiles++] = paths[i];
+		i++;
+	}
+}
+
+static void	print_all(t_arglist *al, t_options *opts, int npath, int *exit_code)
+{
+	int	i;
+	int	print_header;
+
+	i = 0;
+	while (i < al->nfiles)
+	{
+		if (list_path(al->files[i], opts, 0) != 0)
+			*exit_code = 2;
+		i++;
+	}
+	print_header = (npath > 1) || opts->big_r;
+	i = 0;
+	while (i < al->ndirs)
+	{
+		if (i > 0 || al->nfiles > 0)
+			printf("\n");
+		if (list_path(al->dirs[i], opts, print_header) != 0)
+			*exit_code = 2;
+		i++;
+	}
+}
+
+static void	execute_ls(char **paths, int npath, t_options *opts,
+		int *exit_code)
+{
+	t_arglist	al;
+
+	classify(paths, npath, &al, exit_code);
+	if (al.nfiles > 1)
+	{
+		if (opts->t)
+			qsort(al.files, (size_t)al.nfiles, sizeof(char *), cmp_time_main);
+		else
+			qsort(al.files, (size_t)al.nfiles, sizeof(char *), cmp_alpha);
+		if (opts->r)
+			reverse_paths_main(al.files, al.nfiles);
+	}
+	if (al.ndirs > 1)
+	{
+		if (opts->t)
+			qsort(al.dirs, (size_t)al.ndirs, sizeof(char *), cmp_time_main);
+		else
+			qsort(al.dirs, (size_t)al.ndirs, sizeof(char *), cmp_alpha);
+		if (opts->r)
+			reverse_paths_main(al.dirs, al.ndirs);
+	}
+	print_all(&al, opts, npath, exit_code);
+	free(al.files);
+	free(al.dirs);
+}
+
+int	main(int argc, char **argv)
+{
+	t_options	opts;
+	char		**paths;
+	int			npath;
+	int			exit_code;
+
+	(void)argc;
+	exit_code = parse_args(argv, &opts, &paths, &npath);
+	if (exit_code)
+		return (free(paths), exit_code);
+	if (npath == 0)
+	{
+		free(paths);
+		paths = malloc(sizeof(char *));
+		if (!paths)
+			return (1);
+		paths[0] = ".";
+		npath = 1;
+	}
+	execute_ls(paths, npath, &opts, &exit_code);
+	free(paths);
+	return (exit_code);
+}
+
+
+============================================================
+FILE: srcs/main_utils.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                          :::      :::::::: */
+/*   ft_ls.h                                              :+:      :+:    :+: */
+/*                                                        +:+ +:+         +:+ */
+/*   By: login <login@student.42.fr>                       +#+  +:+       +#+ */
+/*                                                          +#+#+#+#+#+   +#+ */
+/*   Created: 2026/08/09 12:00:00 by login                         #+#    #+# */
+/*   Updated: 2026/08/09 12:00:00 by login                  ###   ########.fr */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/ft_ls.h"
+
+int	cmp_time_main(const void *a, const void *b)
+{
+	struct stat	sa;
+	struct stat	sb;
+
+	if (lstat(*(const char **)a, &sa) == -1)
+		return (0);
+	if (lstat(*(const char **)b, &sb) == -1)
+		return (0);
+	if (sa.st_mtime < sb.st_mtime)
+		return (1);
+	if (sa.st_mtime > sb.st_mtime)
+		return (-1);
+	return (strcmp(*(const char **)a, *(const char **)b));
+}
+
+void	reverse_paths_main(char **paths, int n)
+{
+	char	*tmp;
+	int		i;
+
+	i = 0;
+	while (i < n / 2)
+	{
+		tmp = paths[i];
+		paths[i] = paths[n - 1 - i];
+		paths[n - 1 - i] = tmp;
+		i++;
+	}
+}
+
+
+============================================================
+FILE: srcs/parse_args.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                          :::      :::::::: */
+/*   ft_ls.h                                              :+:      :+:    :+: */
+/*                                                        +:+ +:+         +:+ */
+/*   By: login <login@student.42.fr>                       +#+  +:+       +#+ */
+/*                                                          +#+#+#+#+#+   +#+ */
+/*   Created: 2026/08/09 12:00:00 by login                         #+#    #+# */
+/*   Updated: 2026/08/09 12:00:00 by login                  ###   ########.fr */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/ft_ls.h"
+
+static int	apply_flag(char c, t_options *opts)
+{
+	if (c == 'l')
+		opts->l = 1;
+	else if (c == 'R')
+		opts->big_r = 1;
+	else if (c == 'a')
+		opts->a = 1;
+	else if (c == 'r')
+		opts->r = 1;
+	else if (c == 't')
+		opts->t = 1;
+	else
+		return (-1);
+	return (0);
+}
+
+static int	illegal_option(char c)
+{
+	fprintf(stderr, "ft_ls: illegal option -- %c\n", c);
+	fprintf(stderr, "usage: ft_ls [-Ralrt] [file ...]\n");
+	return (1);
+}
+
+static int	paths_push(char ***paths, int *npath, int *cap, char *arg)
+{
+	char	**tmp;
+
+	if (*npath == *cap)
+	{
+		if (*cap == 0)
+			*cap = 8;
+		else
+			*cap = *cap * 2;
+		tmp = realloc(*paths, (size_t)(*cap) * sizeof(char *));
+		if (!tmp)
+		{
+			perror("ft_ls: realloc");
+			return (-1);
+		}
+		*paths = tmp;
+	}
+	(*paths)[(*npath)++] = arg;
+	return (0);
+}
+
+static int	parse_cluster(char *arg, t_options *opts)
+{
+	int	j;
+
+	j = 1;
+	while (arg[j])
+	{
+		if (apply_flag(arg[j], opts) == -1)
+			return (illegal_option(arg[j]));
+		j++;
+	}
+	return (0);
+}
+
+int	parse_args(char **argv, t_options *opts, char ***paths, int *npath)
+{
+	int	i;
+	int	cap;
+	int	p_opts;
+
+	ft_bzero(opts, sizeof(t_options));
+	*paths = NULL;
+	*npath = 0;
+	cap = 0;
+	p_opts = 1;
+	i = 0;
+	while (argv[++i])
+	{
+		if (p_opts && strcmp(argv[i], "--") == 0)
+			p_opts = 0;
+		else if (p_opts && argv[i][0] == '-' && argv[i][1] != '\0')
+		{
+			if (parse_cluster(argv[i], opts) != 0)
+				return (1);
+		}
+		else if (paths_push(paths, npath, &cap, argv[i]) == -1)
+			return (1);
+	}
+	return (0);
+}
+
+
+============================================================
+FILE: srcs/permissions_utils.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                          :::      :::::::: */
+/*   ft_ls_snippet.c                                      :+:      :+:    :+: */
+/*                                                        +:+ +:+         +:+ */
+/*   By: login <login@student.42.fr>                       +#+  +:+       +#+ */
+/*                                                          +#+#+#+#+#+   +#+ */
+/*   Created: 2026/08/09 12:00:00 by login                         #+#    #+# */
+/*   Updated: 2026/08/09 12:00:00 by login                  ###   ########.fr */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/ft_ls.h"
+
+void	set_user_permissions(char *str, mode_t mode)
+{
+	str[1] = '-';
+	str[2] = '-';
+	str[3] = '-';
+	if (mode & S_IRUSR)
+		str[1] = 'r';
+	if (mode & S_IWUSR)
+		str[2] = 'w';
+	if (mode & S_IXUSR)
+		str[3] = 'x';
+}
+
+void	set_group_permissions(char *str, mode_t mode)
+{
+	str[4] = '-';
+	str[5] = '-';
+	str[6] = '-';
+	if (mode & S_IRGRP)
+		str[4] = 'r';
+	if (mode & S_IWGRP)
+		str[5] = 'w';
+	if (mode & S_IXGRP)
+		str[6] = 'x';
+}
+
+void	set_other_permissions(char *str, mode_t mode)
+{
+	str[7] = '-';
+	str[8] = '-';
+	str[9] = '-';
+	if (mode & S_IROTH)
+		str[7] = 'r';
+	if (mode & S_IWOTH)
+		str[8] = 'w';
+	if (mode & S_IXOTH)
+		str[9] = 'x';
+}
+
+
+============================================================
+FILE: srcs/print_long.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                          :::      :::::::: */
+/*   ft_ls.h                                              :+:      :+:    :+: */
+/*                                                        +:+ +:+         +:+ */
+/*   By: login <login@student.42.fr>                       +#+  +:+       +#+ */
+/*                                                          +#+#+#+#+#+   +#+ */
+/*   Created: 2026/08/09 12:00:00 by login                         #+#    #+# */
+/*   Updated: 2026/08/09 12:00:00 by login                  ###   ########.fr */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/ft_ls.h"
+
+static void	format_time(time_t mtime, char *buf, size_t sz)
+{
+	time_t		now;
+	struct tm	*tm;
+
+	now = time(NULL);
+	tm = localtime(&mtime);
+	if (!tm)
+	{
+		strncpy(buf, "??? ?? ??:??", sz - 1);
+		buf[sz - 1] = '\0';
+		return ;
+	}
+	if (mtime <= now && (now - mtime) < (time_t)(180 * 86400))
+		strftime(buf, sz, "%b %e %H:%M", tm);
+	else
+		strftime(buf, sz, "%b %e  %Y", tm);
+}
+
+static void	update_widths(t_widths *w, t_entry *e)
+{
+	char	tmp[64];
+	int		len;
+
+	len = snprintf(tmp, sizeof(tmp), "%lu",
+			(unsigned long)e->st.st_nlink);
+	if (len > w->nlink)
+		w->nlink = len;
+	len = (int)strlen(get_owner(e->st.st_uid));
+	if (len > w->owner)
+		w->owner = len;
+	len = (int)strlen(get_group(e->st.st_gid));
+	if (len > w->group)
+		w->group = len;
+	len = snprintf(tmp, sizeof(tmp), "%lld",
+			(long long)e->st.st_size);
+	if (len > w->size)
+		w->size = len;
+}
+
+static t_widths	scan_widths(t_entry *entries, int n)
+{
+	t_widths	w;
+	int			i;
+
+	w.nlink = 1;
+	w.owner = 1;
+	w.group = 1;
+	w.size = 1;
+	i = 0;
+	while (i < n)
+	{
+		update_widths(&w, &entries[i]);
+		i++;
+	}
+	return (w);
+}
+
+static void	print_one_long(t_entry *e, t_widths *w)
+{
+	char	mode[11];
+	char	timebuf[32];
+
+	mode_to_str(e->st.st_mode, mode);
+	format_time(e->st.st_mtime, timebuf, sizeof(timebuf));
+	printf("%s %*lu %-*s %-*s %*lld %s %s",
+		mode,
+		w->nlink, (unsigned long)e->st.st_nlink,
+		w->owner, get_owner(e->st.st_uid),
+		w->group, get_group(e->st.st_gid),
+		w->size, (long long)e->st.st_size,
+		timebuf,
+		e->name);
+	if (e->is_link && e->link_target[0])
+		printf(" -> %s", e->link_target);
+	printf("\n");
+}
+
+void	print_entries_long(t_entry *entries, int n)
+{
+	t_widths	w;
+	int			i;
+
+	if (n == 0)
+		return ;
+	w = scan_widths(entries, n);
+	i = 0;
+	while (i < n)
+	{
+		print_one_long(&entries[i], &w);
+		i++;
+	}
+}
+
+
+============================================================
+FILE: srcs/print_short.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                          :::      :::::::: */
+/*   ft_ls.h                                              :+:      :+:    :+: */
+/*                                                        +:+ +:+         +:+ */
+/*   By: login <login@student.42.fr>                       +#+  +:+       +#+ */
+/*                                                          +#+#+#+#+#+   +#+ */
+/*   Created: 2026/08/09 12:00:00 by login                         #+#    #+# */
+/*   Updated: 2026/08/09 12:00:00 by login                  ###   ########.fr */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/ft_ls.h"
+
+void	print_entries_short(t_entry *entries, int n)
+{
+	int	i;
+
+	i = 0;
+	while (i < n)
+	{
+		printf("%s\n", entries[i].name);
+		i++;
+	}
+}
+
+
+============================================================
+FILE: srcs/recursive.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                          :::      :::::::: */
+/*   ft_ls.h                                              :+:      :+:    :+: */
+/*                                                        +:+ +:+         +:+ */
+/*   By: login <login@student.42.fr>                       +#+  +:+       +#+ */
+/*                                                          +#+#+#+#+#+   +#+ */
+/*   Created: 2026/08/09 12:00:00 by login                         #+#    #+# */
+/*   Updated: 2026/08/09 12:00:00 by login                  ###   ########.fr */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/ft_ls.h"
+
+static void	print_dir_entries(DIR *dir, const t_options *opts)
+{
+	struct dirent	*entry;
+
+	entry = readdir(dir);
+	while (entry)
+	{
+		if (opts->a || entry->d_name[0] != '.')
+			printf("%s\n", entry->d_name);
+		entry = readdir(dir);
+	}
+}
+
+static void	process_subdirs(DIR *dir, const char *path, const t_options *opts)
+{
+	struct dirent	*entry;
+	char			*subpath;
+
+	rewinddir(dir);
+	entry = readdir(dir);
+	while (entry)
+	{
+		if ((opts->a || entry->d_name[0] != '.')
+			&& entry->d_type == DT_DIR
+			&& strcmp(entry->d_name, ".") != 0
+			&& strcmp(entry->d_name, "..") != 0)
+		{
+			subpath = join_path(path, entry->d_name);
+			recursive_traverse(subpath, opts);
+			free(subpath);
+		}
+		entry = readdir(dir);
+	}
+}
+
+void	recursive_traverse(const char *path, const t_options *opts)
+{
+	DIR	*dir;
+
+	dir = opendir(path);
+	if (!dir)
+	{
+		print_error(path);
+		return ;
+	}
+	printf("%s:\n", path);
+	print_dir_entries(dir, opts);
+	process_subdirs(dir, path, opts);
+	closedir(dir);
+}
+
+
+============================================================
+FILE: srcs/sort.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                          :::      :::::::: */
+/*   ft_ls.h                                              :+:      :+:    :+: */
+/*                                                        +:+ +:+         +:+ */
+/*   By: login <login@student.42.fr>                       +#+  +:+       +#+ */
+/*                                                          +#+#+#+#+#+   +#+ */
+/*   Created: 2026/08/09 12:00:00 by login                         #+#    #+# */
+/*   Updated: 2026/08/09 12:00:00 by login                  ###   ########.fr */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/ft_ls.h"
+
+static int	cmp_alpha(const void *a, const void *b)
+{
+	const t_entry	*ea;
+	const t_entry	*eb;
+
+	ea = (const t_entry *)a;
+	eb = (const t_entry *)b;
+	return (strcmp(ea->name, eb->name));
+}
+
+static int	cmp_time(const void *a, const void *b)
+{
+	const t_entry	*ea;
+	const t_entry	*eb;
+
+	ea = (const t_entry *)a;
+	eb = (const t_entry *)b;
+	if (eb->st.st_mtime != ea->st.st_mtime)
+	{
+		if (eb->st.st_mtime > ea->st.st_mtime)
+			return (1);
+		return (-1);
+	}
+	return (strcmp(ea->name, eb->name));
+}
+
+static void	reverse_entries(t_entry *entries, int n)
+{
+	t_entry	tmp;
+	int		lo;
+	int		hi;
+
+	lo = 0;
+	hi = n - 1;
+	while (lo < hi)
+	{
+		tmp = entries[lo];
+		entries[lo] = entries[hi];
+		entries[hi] = tmp;
+		lo++;
+		hi--;
+	}
+}
+
+void	sort_entries(t_entry *entries, int n, const t_options *opts)
+{
+	if (n <= 1)
+		return ;
+	if (opts->t)
+		qsort(entries, (size_t)n, sizeof(t_entry), cmp_time);
+	else
+		qsort(entries, (size_t)n, sizeof(t_entry), cmp_alpha);
+	if (opts->r)
+		reverse_entries(entries, n);
+}
+
+
+============================================================
+FILE: srcs/stat_utils.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                          :::      :::::::: */
+/*   ft_ls.h                                              :+:      :+:    :+: */
+/*                                                        +:+ +:+         +:+ */
+/*   By: login <login@student.42.fr>                       +#+  +:+       +#+ */
+/*                                                          +#+#+#+#+#+   +#+ */
+/*   Created: 2026/08/09 12:00:00 by login                         #+#    #+# */
+/*   Updated: 2026/08/09 12:00:00 by login                  ###   ########.fr */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/ft_ls.h"
+
+static char	get_file_type(mode_t mode)
+{
+	if (S_ISDIR(mode))
+		return ('d');
+	if (S_ISLNK(mode))
+		return ('l');
+	if (S_ISCHR(mode))
+		return ('c');
+	if (S_ISBLK(mode))
+		return ('b');
+	if (S_ISFIFO(mode))
+		return ('p');
+	if (S_ISSOCK(mode))
+		return ('s');
+	return ('-');
+}
+
+static void	set_special_permissions(char *mode_str, mode_t mode)
+{
+	if (mode & S_ISUID)
+	{
+		if (mode & S_IXUSR)
+			mode_str[3] = 's';
+		else
+			mode_str[3] = 'S';
+	}
+	if (mode & S_ISGID)
+	{
+		if (mode & S_IXGRP)
+			mode_str[6] = 's';
+		else
+			mode_str[6] = 'S';
+	}
+	if (mode & S_ISVTX)
+	{
+		if (mode & S_IXOTH)
+			mode_str[9] = 't';
+		else
+			mode_str[9] = 'T';
+	}
+}
+
+void	mode_to_str(mode_t mode, char *mode_str)
+{
+	mode_str[0] = get_file_type(mode);
+	set_user_permissions(mode_str, mode);
+	set_group_permissions(mode_str, mode);
+	set_other_permissions(mode_str, mode);
+	mode_str[10] = '\0';
+	set_special_permissions(mode_str, mode);
+}
+
+const char	*get_owner(uid_t uid)
+{
+	struct passwd	*pw;
+	static char		buf[32];
+
+	pw = getpwuid(uid);
+	if (pw)
+		return (pw->pw_name);
+	snprintf(buf, sizeof(buf), "%u", (unsigned int)uid);
+	return (buf);
+}
+
+const char	*get_group(gid_t gid)
+{
+	struct group	*gr;
+	static char		buf[32];
+
+	gr = getgrgid(gid);
+	if (gr)
+		return (gr->gr_name);
+	snprintf(buf, sizeof(buf), "%u", (unsigned int)gid);
+	return (buf);
+}
+
+
+============================================================
+FILE: srcs/utils.c
+============================================================
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                          :::      :::::::: */
+/*   ft_ls_snippet.c                                      :+:      :+:    :+: */
+/*                                                        +:+ +:+         +:+ */
+/*   By: login <login@student.42.fr>                       +#+  +:+       +#+ */
+/*                                                          +#+#+#+#+#+   +#+ */
+/*   Created: 2026/08/09 12:00:00 by login                         #+#    #+# */
+/*   Updated: 2026/08/09 12:00:00 by login                  ###   ########.fr */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/ft_ls.h"
+
+char	*join_path(const char *dir, const char *name)
+{
+	size_t	len;
+	char	*path;
+
+	len = strlen(dir) + strlen(name) + 2;
+	path = malloc(len);
+	if (!path)
+		return (NULL);
+	snprintf(path, len, "%s/%s", dir, name);
+	return (path);
+}
+
+void	free_entries(t_entry *entries, int count)
+{
+	(void)count;
+	free(entries);
+}
+
+long	compute_total(t_entry *entries, int n)
+{
+	long	total;
+	int		i;
+
+	total = 0;
+	i = 0;
+	while (i < n)
+	{
+		total += entries[i].st.st_blocks;
+		i++;
+	}
+	return (total / 2);
+}
+
+DIR	*open_directory(const char *path, int *out_count)
+{
+	DIR	*dir;
+
+	dir = opendir(path);
+	if (!dir)
+	{
+		ft_error(path);
+		*out_count = -1;
+	}
+	return (dir);
+}
+
+
+===== MAKEFILE =====
+NAME = ft_ls
+
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -g
+
+SRC_DIR = srcs
+OBJ_DIR = obj
+INC_DIR = includes
+LIBFT_DIR = mylibft
+LIBFT_NAME = mylibft.a
+LIBFT = $(LIBFT_DIR)/$(LIBFT_NAME)
+
+SRCS = $(SRC_DIR)/main.c \
+	   $(SRC_DIR)/parse_args.c \
+	   $(SRC_DIR)/list_dir.c \
+	   $(SRC_DIR)/list_dir_utils.c \
+	   $(SRC_DIR)/error.c \
+	   $(SRC_DIR)/print_short.c \
+	   $(SRC_DIR)/sort.c \
+	   $(SRC_DIR)/stat_utils.c \
+	   $(SRC_DIR)/print_long.c \
+	   $(SRC_DIR)/permissions_utils.c \
+	   $(SRC_DIR)/main_utils.c \
+	   $(SRC_DIR)/utils.c
+
+OBJS = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRCS))
+
+all: $(NAME)
+
+$(NAME): $(OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) -I$(INC_DIR) -I$(LIBFT_DIR) $(OBJS) $(LIBFT) -o $(NAME)
+
+$(LIBFT):
+	$(MAKE) -C $(LIBFT_DIR)
+
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
+	$(CC) $(CFLAGS) -I$(INC_DIR) -I$(LIBFT_DIR) -c $< -o $@
+
+clean:
+	rm -rf $(OBJ_DIR)
+	$(MAKE) -C $(LIBFT_DIR) clean
+
+fclean: clean
+	rm -f $(NAME)
+	$(MAKE) -C $(LIBFT_DIR) fclean
+
+re: fclean all
+
+.PHONY: all clean fclean re
+
+
+===== README =====
+# ft_ls
+Project from 42 Advance
+
+# Docker Ubuntu Environment Setup
+
+## 1. Start the Ubuntu Docker Container
+
+```bash
+docker run --rm -it -v "$(pwd)":/usr/src/app -w /usr/src/app ubuntu:latest bash
+```
+
+## 2. Install Required Tools (First Time Only)
+
+Inside the container:
+
+```bash
+apt-get update && apt-get install -y build-essential valgrind
+```
+
+## 3. Build and Run the Project
+
+```bash
+make re
+valgrind ./ft_ls [optional_arguments]
+```
